@@ -690,10 +690,10 @@ long long attackVertical(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && u + i == n) sum--;
+		//else if (level == 3 && u + i == n) sum--;
 		else break;
 	}
 	for (int i = 1; i <= k && u - i > 0; i++) {
@@ -702,15 +702,15 @@ long long attackVertical(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && u - i == 1) sum--;
+		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == 4) return 10000000;
+	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
-	if (level == 3) return sum + attack[countCom];
+	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
 	sum += attack[countCom];
 	return sum;
@@ -727,10 +727,10 @@ long long attackHorizontal(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u][v + i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && v + i == n) sum--;
+		//else if (level == 3 && v + i == n) sum--;
 		else break;
 	}
 	for (int i = 1; i <= k && v - i > 0; i++) {
@@ -739,15 +739,15 @@ long long attackHorizontal(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u][v - i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && v - i == 1) sum--;
+		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == 4) return 10000000;
+	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
-	if (level == 3) return sum + attack[countCom];
+	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
 	sum += attack[countCom];
 	return sum;
@@ -765,10 +765,10 @@ long long attackCross(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v + i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && (u + i == n || v + i == n)) sum--;
+		//else if (level == 3 && (u + i == n || v + i == n)) sum--;
 		else break;
 	}
 
@@ -778,15 +778,15 @@ long long attackCross(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v - i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
+		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == 4) return 10000000;
+	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
-	if (level == 3) return sum + attack[countCom];
+	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
 	sum += attack[countCom];
 	return sum;
@@ -805,10 +805,10 @@ long long attackReverse(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v + i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && (u - i == 1 || v + i == n)) sum--;
+		//else if (level == 3 && (u - i == 1 || v + i == n)) sum--;
 		else break;
 	}
 
@@ -818,15 +818,15 @@ long long attackReverse(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v - i]) {
 			countPlayer++;
-			if (level == 3) sum -= 9;
+			//if (level == 3) sum -= 9;
 			break;
 		}
-		else if (level == 3 && (u + i == n || v - i == 1)) sum--;
+		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == 4) return 10000000;
+	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
-	if (level == 3) return sum + attack[countCom];
+	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
 	sum += attack[countCom];
 	return sum;
@@ -840,29 +840,29 @@ long long defenseVertical(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n; i++) {
 		if (!B[3 - icon][u + i][v]) {
 			countCom++;
-			if (level == 3) sum--;
+			//if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u + i][v]) {
 			countPlayer++;
 		}
-		else if (level == 3 && u + i == n) sum--;
+		//else if (level == 3 && u + i == n) sum--;
 		else break;
 	}
 	for (int i = 1; i <= k && u - i > 0; i++) {
 		if (!B[3 - icon][u - i][v]) {
 			countCom++;
-			if (level == 3) sum--;
+			//if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u - i][v]) {
 			countPlayer++;
 		}
-		else if (level == 3 && u - i == 1) sum--;
+		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == 3) return 0;
-	if (level == 3 && countCom == 0 && countPlayer == 3) return 100000;
+	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -876,29 +876,29 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && v + i <= n; i++) {
 		if (!B[3 - icon][u][v + i]) {
 			countCom++;
-			if (level == 3) sum -- ;
+			//if (level == 3) sum -- ;
 			break;
 		}
 		else if (!B[icon][u][v + i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && (v + i == n)) sum--;
+		//else if (level == 3 && (v + i == n)) sum--;
 		else break;
 	}
 	for (int i = 1; i <= k && v - i > 0; i++) {
 		if (!B[3 - icon][u][v - i]) {
 			countCom++;
-			if (level == 3) sum -- ;
+			//if (level == 3) sum -- ;
 			break;
 		}
 		else if (!B[icon][u][v - i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && v - i == 1) sum--;
+		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == 3) return 0;
-	if (level == 3 && countCom == 0 && countPlayer == 3) return 100000;
+	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -913,30 +913,30 @@ long long defenseCross(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n && v + i <= n; i++) {
 		if (!B[3 - icon][u + i][v + i]) {
 			countCom++;
-			if (level == 3) sum --;
+			//if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u + i][v + i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && (u + i == n || v + i == n)) sum--;
+		//else if (level == 3 && (u + i == n || v + i == n)) sum--;
 		else break;
 	}
 
 	for (int i = 1; i <= k && u - i > 0 && v - i > 0; i++) {
 		if (!B[3 - icon][u - i][v - i]) {
 			countCom++;
-			if (level == 3) sum --;
+			//if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u - i][v - i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
+		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == 3) return 0;
-	if (level == 3 && countCom == 0 && countPlayer == 3) return 100000;
+	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -950,30 +950,30 @@ long long defenseReverse(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0 && v + i <= n; i++) {
 		if (!B[3 - icon][u - i][v + i]) {
 			countCom++;
-			if (level == 3) sum --;
+			//if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u - i][v + i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && (u - i == 1 || v + i == n)) sum--;
+		//else if (level == 3 && (u - i == 1 || v + i == n)) sum--;
 		else break;
 	}
 
 	for (int i = 1; i <= k && u + i <= n && v - i > 0; i++) {
 		if (!B[3 - icon][u + i][v - i]) {
 			countCom++;
-			if (level == 3) sum --;
+			//if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u + i][v - i]) {
 			countPlayer++;
 		}
-		else if (level == 3 && (u + i == n || v - i == 1)) sum--;
+		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == 3) return 0;
-	if (level == 3 && countCom == 0 && countPlayer == 3) return 100000;
+	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -990,7 +990,7 @@ ii findPosition(int icon, int n, int k) {
 				long long defenseScore = defenseVertical(i, j, icon, k) + defenseHorizontal(i, j, icon, k) + defenseCross(i, j, icon, k) + defenseReverse(i, j, icon, k);
 				long long temporaryScore = attackScore > defenseScore ? attackScore : defenseScore;
 				long long sum = attackScore + defenseScore;
-				if (Max == temporaryScore) {
+				if (level == 3 && Max == temporaryScore) {
 					if (MaxSum < sum) {
 						MaxSum = sum;
 						res = make_pair(i, j);
@@ -1034,7 +1034,7 @@ void playLevel(int icon, int n, int k, int level) {
 		defense[0] = 0;
 		defense[1] = 3;
 		defense[2] = 27;
-		defense[3] = 99;
+		defense[3] = 81;
 		defense[4] = 729;
 		defense[5] = 6561;
 		defense[6] = 59049;		
@@ -1648,16 +1648,36 @@ void loadGamePVC() {
 }
 
 void saveViewPVP(int number) {
-
 	stringstream str;
-	string s = "";
-	while (number > 0)
-	{
-		s = s + (char)(number % 10) + '0';
-		number /= 10;
-	}
-	s.reserve(s.size());
-	cout << s << endl;
+	str << "Data/Statistics/PVP/" << number << ".txt";
+	string fileName = str.str();
+	ofstream fileOut(fileName.c_str());
+	fileOut << n << endl;
+	fileOut << xScore << " " << oScore << endl;
+	string s = player1.getString();
+	fileOut << s << endl;
+	s = player2.getString();
+	fileOut << s << endl;
+	fileOut << turn << endl;
+	for (int i = 1; i <= turn; i++)
+		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+}
+
+void saveViewPVC(int number) {
+	stringstream str;
+	str << "Data/Statistics/PVC/" << number << ".txt";
+	string fileName = str.str();
+	ofstream fileOut(fileName.c_str());
+	fileOut << n << endl;
+	fileOut << xScore << " " << oScore << endl;
+	fileOut << playerIcon << endl;
+
+	string s = player.getString();
+	fileOut << s << endl;
+
+	fileOut << turn << endl;
+	for (int i = 1; i <= turn; i++)
+		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
 }
 
 void updatePVP(int winer) {
@@ -1677,7 +1697,7 @@ void updatePVP(int winer) {
 	ofstream fileOut("Data/Statistics/PVP/summary.txt");
 	fileOut.clear();
 	fileOut << countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw;
-	//saveViewPVP(countGame);
+	saveViewPVP(countGame);
 
 }
 
@@ -1688,17 +1708,16 @@ void updatePVC(int winer) {
 	fileIn >> numberOfWinX;
 	fileIn >> numberOfWinO;
 	fileIn >> numberOfDraw;
+	
 	countGame++;
 	if (winer == 1) numberOfWinX++;
 	if (winer == 2) numberOfWinO++;
 	if (winer == 3) numberOfDraw++;
-
+	
 	ofstream fileOut("Data/Statistics/PVC/summary.txt");
 	fileOut.clear();
 	fileOut << countGame<<" "<<numberOfWinX<<" "<<numberOfWinO<<" "<<numberOfDraw;
-
-
-	//saveViewPVC(countGame);
+	saveViewPVC(countGame);
 }
 
 int main() {
@@ -1829,6 +1848,10 @@ int main() {
 					if (pcstate && start.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
 					{
 						state = PLAY;
+						xScore = 0;
+						oScore = 0;
+						score.setString("0 : 0");
+						score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
 						drawableInit = true;
 					}
 				}
@@ -1988,6 +2011,7 @@ int main() {
 							{
 								if (turn == n * n) {
 									winer = 3;
+									if (pcstate) updatePVC(winer); else updatePVP(winer);
 								}
 							}
 
