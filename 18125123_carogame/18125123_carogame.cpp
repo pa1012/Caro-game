@@ -96,13 +96,14 @@ sf::Text winNoti;
 sf::Text player, computer;
 sf::Text score;
 sf::Text asking, name,nameNoti;
+sf::Text pvc, numberOfGame, xWin, oWin, draw, enterNumber;
 
 //Sound
 sf::SoundBuffer buffer;
 sf::Sound click;
 sf::Music music;
 
-//Clock
+
 
 void InitCont() {
 	while (!S.empty())
@@ -175,6 +176,40 @@ void InitForSaveAndLoad() {
 
 	loadButton.setTexture(loadButtonText);
 	loadButton.setPosition((screenWidth - loadButton.getGlobalBounds().width) / 2, 550);
+}
+
+void InitForStatistic() {
+
+	numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2 , 50);
+	numberOfGame.setFont(font);
+	numberOfGame.setFillColor(sf::Color::White);
+	numberOfGame.setCharacterSize(30);
+	
+	xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 130);
+	xWin.setFont(font);
+	xWin.setFillColor(sf::Color::White);
+	xWin.setCharacterSize(30);
+
+	oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2,210);
+	oWin.setFont(font);
+	oWin.setFillColor(sf::Color::White);
+	oWin.setCharacterSize(30);
+
+	draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2,290);
+	draw.setFont(font);
+	draw.setFillColor(sf::Color::White);
+	draw.setCharacterSize(30);
+
+	enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 370);
+	enterNumber.setFont(font);
+	enterNumber.setFillColor(sf::Color::White);
+	enterNumber.setCharacterSize(30);
+	
+	back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
+
+	numberBox2.setPosition((screenWidth - numberBox2.getLocalBounds().width) / 2, 460);
+
+	load.setPosition((screenWidth - load.getLocalBounds().width) / 2, 540);
 }
 
 void Init() {
@@ -862,7 +897,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 		else break;
 	}
 	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
-	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -898,7 +933,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 		else break;
 	}
 	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
-	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -936,7 +971,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 		else break;
 	}
 	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
-	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -973,7 +1008,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 		else break;
 	}
 	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
-	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -1720,6 +1755,8 @@ void updatePVC(int winer) {
 	saveViewPVC(countGame);
 }
 
+
+
 int main() {
 
 	//Creation
@@ -2124,7 +2161,7 @@ int main() {
 			}
 			else
 			if (state == STATISTIC) {
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+				if (!chooseModeToLoad && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
 					if (!chooseModeToLoad) {
 						if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 							loadPC = false;
@@ -2135,6 +2172,9 @@ int main() {
 							chooseModeToLoad = true;
 						}
 					}
+				}
+				if (chooseModeToLoad && event.type == sf::Event::TextEntered) {
+
 				}
 			}
 		}
@@ -2449,6 +2489,18 @@ int main() {
 			if (!chooseModeToLoad) {
 				window.draw(pcMode);
 				window.draw(ppMode);
+			}
+			else {
+				if (loadPC) {
+					window.draw(pvc);
+					window.draw(numberOfGame);
+					window.draw(xWin);
+					window.draw(oWin);
+					window.draw(draw);
+					window.draw(enterNumber);
+					window.draw(numberBox2);
+					window.draw(number);
+				}
 			}
 			break;
 		}
