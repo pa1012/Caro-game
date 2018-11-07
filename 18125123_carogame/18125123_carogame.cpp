@@ -6,7 +6,7 @@
 #include<deque>
 #include<sstream>
 #include<fstream>
-
+#include "intro.h"
 
 using namespace std;
 
@@ -877,6 +877,7 @@ long long attackVertical(int u, int v, int icon, int k) {
 		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
+	if (level == 3 && countPlayer == 0 && countCom == k - 2) return 100000;
 	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
@@ -1030,7 +1031,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1066,7 +1067,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1104,7 +1105,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -2014,7 +2015,7 @@ int main() {
 					chooseModeToLoad = false;
 					loadPC = false;
 				}
-				if (aboutUs.getLocalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+				if (aboutUs.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 					state = ABOUTUS;
 				}
 			}
@@ -2657,7 +2658,7 @@ int main() {
 		window.clear();
 
 		switch (state)
-		{
+	{
 		case SPLASH:
 			window.draw(logo);
 			break;
@@ -2813,9 +2814,10 @@ int main() {
 			else window.draw(rule3);
 			break;
 		case ABOUTUS:
+			intro(window,font);
 			window.draw(back);
 			break;
-		}
+	}
 			
 		window.display();
 	}
