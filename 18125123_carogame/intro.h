@@ -8,4 +8,4 @@
 #include<sstream>
 #include<fstream>
 
-void intro(sf::RenderWindow &window,sf::Font font);
+void intro(sf::RenderWindow &window);

@@ -1,11 +1,10 @@
 #include "intro.h"
 
-void intro(sf::RenderWindow &window,sf::Font font) {
-	sf::Text intro;
-	intro.setCharacterSize(40);
-	intro.setFont(font);
-	intro.setFillColor(sf::Color::White);
-	intro.setString("INTRODUCTION");
+void intro(sf::RenderWindow &window) {
+	sf::Texture introText;
+	if (introText.loadFromFile("Data/intro.png") == -1) return;
+	sf::Sprite intro;
+	intro.setTexture(introText);
 	intro.setPosition(0, 0);
 	window.draw(intro);
 }

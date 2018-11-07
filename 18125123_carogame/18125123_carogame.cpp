@@ -7,7 +7,7 @@
 #include<sstream>
 #include<fstream>
 #include "intro.h"
-
+//#include "chooserule.h"
 using namespace std;
 
 const int MAXN = 50;
@@ -51,6 +51,8 @@ bool loadError = false;
 bool chooseModeToLoad,loadPC;
 int GAMES = 0;
 bool chooseNumberSucceed = false;
+bool backgroundOn = true;
+bool chooseRuleSucceed = false;
 iii D[MAXN * MAXN];
 stack <iii> S, Save;
 enum GameState {
@@ -70,6 +72,7 @@ sf::Texture saveText, loadText,aboutUsText;
 sf::Texture scoreText;
 sf::Texture saveButtonText;
 sf::Texture loadButtonText;
+sf::Texture background;
 
 //Sprites
 
@@ -86,6 +89,7 @@ sf::Sprite loadButton;
 //Shape
 sf::RectangleShape gameBoard, information, box[MAXN][MAXN];
 sf::RectangleShape boxName1, boxName2;
+sf::RectangleShape backgroundButton;
 
 //Fonts
 
@@ -100,6 +104,7 @@ sf::Text player, computer;
 sf::Text score;
 sf::Text asking, name,nameNoti;
 sf::Text pvc, numberOfGame, xWin, oWin, draw, enterNumber;
+sf::Text rule[9];
 
 //Sound
 sf::SoundBuffer buffer;
@@ -378,7 +383,6 @@ void Init() {
 	chooseIconSucceed = false;
 	winX = 0; winY = 0;
 	
-
 	//gameName
 	int posXName = (screenWidth - gameNameWidth) / 2, posYName = (screenHeight - gameNameHeight) / 2;
 	gameName.setTexture(gameNameText);
@@ -453,9 +457,10 @@ void Init() {
 	gameBoard.setFillColor(sf::Color::Black);
 	gameBoard.setOutlineThickness(1.0f);
 	gameBoard.setOutlineColor(sf::Color::White);
-	information.setFillColor(sf::Color::Black);
+	//information.setFillColor(sf::Color::Black);
 	information.setOutlineColor(sf::Color::White);
 	information.setOutlineThickness(1.0f);
+	information.setTexture(&background);
 	for (i = 0; i < MAXN; i++)
 		for (j = 0; j < MAXN; j++) {
 			box[i][j].setTexture(&emptyText);
@@ -529,6 +534,11 @@ void Init() {
 	rule3.setFillColor(sf::Color::White);
 	rule3.setString("5 in a line to win.");
 
+	//background
+	backgroundOn = true;
+	backgroundButton.setSize(sf::Vector2f(20, 20));
+	backgroundButton.setFillColor(sf::Color::White);
+	backgroundButton.setPosition(screenWidth - backgroundButton.getGlobalBounds().width, 0);
 	//Win
 
 	winNoti.setCharacterSize(35);
@@ -552,6 +562,9 @@ void Init() {
 }
 
 void loadData() {
+	if (background.loadFromFile("Data/background.png") == -1) {
+		return;
+	}
 	if (loadButtonText.loadFromFile("Data/loadbutton.png") == -1) {
 		return;
 	}
@@ -1032,7 +1045,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 		else break;
 	}
 	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
-	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 1000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -1068,7 +1081,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 		else break;
 	}
 	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
-	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -1106,7 +1119,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 		else break;
 	}
 	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
-	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -1143,7 +1156,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 		else break;
 	}
 	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
-	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
+	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
 	return sum;
@@ -2139,6 +2152,7 @@ int main() {
 					if (undo.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 						undostate = true;
 					}
+					
 					if (!pcstate && !undostate && winer == 0)
 					{
 						for (int i = turn; i >= 1 && winer == 0; i--) {
@@ -2179,7 +2193,7 @@ int main() {
 							music.play();
 						}
 					}
-
+					
 					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 						state = MENU;
 						resume = true;
@@ -2237,6 +2251,9 @@ int main() {
 						loadPC = pcstate;
 						enter = false;
 						enterNameFile = true;
+					}
+					if (backgroundButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+						backgroundOn = !backgroundOn;
 					}
 
 				}
@@ -2699,8 +2716,9 @@ int main() {
 			}
 			break;
 		case PLAY:
-			window.draw(information);
+			if (backgroundOn) window.draw(information);
 			window.draw(gameBoard);
+			window.draw(backgroundButton);
 			for (i = 1; i <= n; i++)
 				for (j = 1; j <= n; j++)
 				{
@@ -2787,6 +2805,7 @@ int main() {
 			}
 			break;
 		case VIEW:
+			window.draw(information);
 			window.draw(gameBoard);
 			for (i = 1; i <= n; i++)
 				for (j = 1; j <= n; j++)
@@ -2814,7 +2833,7 @@ int main() {
 			else window.draw(rule3);
 			break;
 		case ABOUTUS:
-			intro(window,font);
+			intro(window);
 			window.draw(back);
 			break;
 	}
