@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="18125123_carogame.cpp" />
+    <ClCompile Include="enterText.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EnterText.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

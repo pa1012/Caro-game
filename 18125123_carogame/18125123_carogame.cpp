@@ -7,6 +7,7 @@
 #include<sstream>
 #include<fstream>
 
+
 using namespace std;
 
 const int MAXN = 50;
@@ -48,10 +49,12 @@ bool enterNameFile = false;
 bool enterNameSucceed = false;
 bool loadError = false;
 bool chooseModeToLoad,loadPC;
+int GAMES = 0;
+bool chooseNumberSucceed = false;
 iii D[MAXN * MAXN];
 stack <iii> S, Save;
 enum GameState {
-	SPLASH, MENU, PLAY, END, CHOOSE_SIZE, CHOOSEMODE, STATISTIC, SAVE, WIN,LOAD 
+	SPLASH, MENU, PLAY, END, CHOOSE_SIZE, CHOOSEMODE, STATISTIC, SAVE, WIN,LOAD,VIEW,ABOUTUS
 };
 GameState state = SPLASH;
 
@@ -178,38 +181,171 @@ void InitForSaveAndLoad() {
 	loadButton.setPosition((screenWidth - loadButton.getGlobalBounds().width) / 2, 550);
 }
 
-void InitForStatistic() {
+void InitForStatistic(int x) {
+	chooseNumberSucceed = false;
+	int countGame, numberOfWinX, numberOfWinO, numberOfDraw;
+	if (x == 0) {
+		ifstream fileIn("Data/Statistics/PVP/summary.txt");
+		fileIn >> countGame;
+		fileIn >> numberOfWinX;
+		fileIn >> numberOfWinO;
+		fileIn >> numberOfDraw;
+		GAMES = countGame;
+	}
+	else {
+		ifstream fileIn("Data/Statistics/PVC/summary.txt");
+		fileIn >> countGame;
+		fileIn >> numberOfWinX;
+		fileIn >> numberOfWinO;
+		fileIn >> numberOfDraw;
+		GAMES = countGame;
+	}
+	stringstream str;
 
-	numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2 , 50);
+	str << countGame;
 	numberOfGame.setFont(font);
 	numberOfGame.setFillColor(sf::Color::White);
 	numberOfGame.setCharacterSize(30);
-	
-	xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 130);
+	numberOfGame.setString("Games: " + str.str());
+	numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 50);
+
+	str.str("");
+	str << numberOfWinX;
 	xWin.setFont(font);
 	xWin.setFillColor(sf::Color::White);
 	xWin.setCharacterSize(30);
+	xWin.setString("X WIN: " + str.str());
+	xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 130);
 
-	oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2,210);
+	str.str("");
+	str << numberOfWinO;
 	oWin.setFont(font);
 	oWin.setFillColor(sf::Color::White);
 	oWin.setCharacterSize(30);
+	oWin.setString("O WIN: " + str.str() );
+	oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2, 210);
 
-	draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2,290);
+	str.str("");
+	str << numberOfDraw;
 	draw.setFont(font);
 	draw.setFillColor(sf::Color::White);
 	draw.setCharacterSize(30);
-
-	enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 370);
-	enterNumber.setFont(font);
-	enterNumber.setFillColor(sf::Color::White);
-	enterNumber.setCharacterSize(30);
+	draw.setString("DRAW: " + str.str());
+	draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2, 290);
 	
+
+	//enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 460);
+	enterNumber.setFont(font);
+	enterNumber.setFillColor(sf::Color::Black);
+	enterNumber.setCharacterSize(35);
+	enterNumber.setString("|");
+	enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2 -1, 460);
+
 	back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
 
 	numberBox2.setPosition((screenWidth - numberBox2.getLocalBounds().width) / 2, 460);
 
-	load.setPosition((screenWidth - load.getLocalBounds().width) / 2, 540);
+	loadButton.setPosition((screenWidth - loadButton.getLocalBounds().width) / 2, 540);
+}
+
+void InitForViewPVP(int num) {
+	pcstate = false;
+	stringstream str;
+	str << "Data/Statistics/PVP/" << num << ".txt";
+	ifstream fileIn(str.str().c_str());
+
+	if (fileIn.is_open()) {
+		fileIn >> n;
+		cout << n << endl;
+		fileIn >> xScore >> oScore;
+		cout << xScore << " " << oScore << endl;
+
+		char s[100];
+
+		fileIn.ignore();
+
+		fileIn.getline(s, 100);
+		string r;
+		r = s;
+		cout << r << endl;
+		player1.setString(r);
+
+		fileIn.getline(s, 100);
+		r = s;
+		cout << r << endl;
+		player2.setString(r);
+
+		fileIn >> turn;
+		cout << turn;
+		for (int i = 1; i <= turn; i++)
+		{
+			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
+			int icon = D[i].first;
+			int x = D[i].second.first;
+			int y = D[i].second.second;
+			if (icon == 1) {
+				B1[x][y] = false;
+				box[x][y].setTexture(&bigXBoxText);
+			}
+			else {
+				B2[x][y] = false;
+				box[x][y].setTexture(&bigOBoxText);
+			}
+			//S.push(make_pair(icon, make_pair(x, y)));
+			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+		}
+		fileIn >> winX >> winY >> winer;
+	}
+
+}
+
+void InitForViewPVC(int num) {
+	pcstate = true;
+	stringstream str;
+	str << "Data/Statistics/PVC/" << num << ".txt";
+	ifstream fileIn(str.str().c_str());
+
+	if (fileIn.is_open()) {
+		fileIn >> n;
+		cout << n << endl;
+
+		fileIn >> xScore >> oScore;
+		cout << xScore << " " << oScore << endl;
+
+		fileIn >> playerIcon;
+		cout << playerIcon << endl;
+
+		char s[100];
+
+		fileIn.ignore();
+
+		fileIn.getline(s, 100);
+		string r;
+		r = s;
+		cout << r << endl;
+		player.setString(r);
+
+		fileIn >> turn;
+		cout << turn;
+		for (int i = 1; i <= turn; i++)
+		{
+			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
+			int icon = D[i].first;
+			int x = D[i].second.first;
+			int y = D[i].second.second;
+			if (icon == 1) {
+				B1[x][y] = false;
+				box[x][y].setTexture(&bigXBoxText);
+			}
+			else {
+				B2[x][y] = false;
+				box[x][y].setTexture(&bigOBoxText);
+			}
+			//S.push(make_pair(icon, make_pair(x, y)));
+			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+		}
+		fileIn >> winX >> winY >> winer;
+	}
 }
 
 void Init() {
@@ -551,8 +687,6 @@ void loadData() {
 #pragma endregion
 
 #pragma region PVP
-
-
 int check(int n, int k, int u, int v) {
 
 	int count1 = 0; int count2 = 0;
@@ -725,7 +859,7 @@ long long attackVertical(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && u + i == n) sum--;
@@ -737,13 +871,13 @@ long long attackVertical(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -762,7 +896,7 @@ long long attackHorizontal(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u][v + i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && v + i == n) sum--;
@@ -774,13 +908,13 @@ long long attackHorizontal(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u][v - i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -800,7 +934,7 @@ long long attackCross(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v + i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && (u + i == n || v + i == n)) sum--;
@@ -813,13 +947,13 @@ long long attackCross(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v - i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -840,7 +974,7 @@ long long attackReverse(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u - i][v + i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && (u - i == 1 || v + i == n)) sum--;
@@ -853,13 +987,13 @@ long long attackReverse(int u, int v, int icon, int k) {
 		}
 		else if (!B[icon][u + i][v - i]) {
 			countPlayer++;
-			//if (level == 3) sum -= 9;
+			if (level == 3) sum -= 9;
 			break;
 		}
 		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	//if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -875,7 +1009,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n; i++) {
 		if (!B[3 - icon][u + i][v]) {
 			countCom++;
-			//if (level == 3) sum--;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u + i][v]) {
@@ -887,7 +1021,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0; i++) {
 		if (!B[3 - icon][u - i][v]) {
 			countCom++;
-			//if (level == 3) sum--;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u - i][v]) {
@@ -896,7 +1030,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -911,7 +1045,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && v + i <= n; i++) {
 		if (!B[3 - icon][u][v + i]) {
 			countCom++;
-			//if (level == 3) sum -- ;
+			if (level == 3) sum -- ;
 			break;
 		}
 		else if (!B[icon][u][v + i]) {
@@ -923,7 +1057,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && v - i > 0; i++) {
 		if (!B[3 - icon][u][v - i]) {
 			countCom++;
-			//if (level == 3) sum -- ;
+			if (level == 3) sum -- ;
 			break;
 		}
 		else if (!B[icon][u][v - i]) {
@@ -932,7 +1066,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -948,7 +1082,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n && v + i <= n; i++) {
 		if (!B[3 - icon][u + i][v + i]) {
 			countCom++;
-			//if (level == 3) sum --;
+			if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u + i][v + i]) {
@@ -961,7 +1095,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0 && v - i > 0; i++) {
 		if (!B[3 - icon][u - i][v - i]) {
 			countCom++;
-			//if (level == 3) sum --;
+			if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u - i][v - i]) {
@@ -970,7 +1104,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 50;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -985,7 +1119,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0 && v + i <= n; i++) {
 		if (!B[3 - icon][u - i][v + i]) {
 			countCom++;
-			//if (level == 3) sum --;
+			if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u - i][v + i]) {
@@ -998,7 +1132,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n && v - i > 0; i++) {
 		if (!B[3 - icon][u + i][v - i]) {
 			countCom++;
-			//if (level == 3) sum --;
+			if (level == 3) sum --;
 			break;
 		}
 		else if (!B[icon][u + i][v - i]) {
@@ -1007,7 +1141,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	//if (level == 3 && countCom == 1 && countPlayer == k-2) return 0;
+	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
 	if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1025,12 +1159,12 @@ ii findPosition(int icon, int n, int k) {
 				long long defenseScore = defenseVertical(i, j, icon, k) + defenseHorizontal(i, j, icon, k) + defenseCross(i, j, icon, k) + defenseReverse(i, j, icon, k);
 				long long temporaryScore = attackScore > defenseScore ? attackScore : defenseScore;
 				long long sum = attackScore + defenseScore;
-				if (level == 3 && Max == temporaryScore) {
+				/*if (level == 3 && Max == temporaryScore) {
 					if (MaxSum < sum) {
 						MaxSum = sum;
 						res = make_pair(i, j);
 					}
-				}
+				}*/
 				if (Max < temporaryScore) {
 					Max = temporaryScore;
 					res = make_pair(i, j);
@@ -1323,7 +1457,7 @@ void checkWinPC() {
 		int x = D[i].second.first;
 		int y = D[i].second.second;
 		int icon = D[i].first;
-		if (n <= 4 && checkPC(n, 3, x, y, icon)) winer = icon;
+		if (n <= 3 && checkPC(n, 3, x, y, icon)) winer = icon;
 		if (n <= 6 && checkPC(n, 4, x, y, icon)) winer = icon;
 		if (n >= 7 && checkPC(n, 5, x, y, icon)) winer = icon;
 		if (winer > 0) {
@@ -1527,6 +1661,36 @@ bool enterName(sf::Text &name,sf::Event event) {
 	}
 }
 
+int Number(sf::Event event, sf::Text &number) {
+	sf::String str = number.getString();
+	int num = 0;
+	if (str == "|") {
+		str = "";
+		num = 0;
+	}
+	else {
+		for (int i = 0; i < str.getSize(); i++)
+			num = num * 10 + str[i] - '0';
+	}
+	if (event.text.unicode == 8) {
+		if (str.getSize())
+			str.erase(str.getSize() - 1, str.getSize());
+		number.setString(str);
+		//number.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 450);
+		num /= 10;
+		return num;
+	}
+	if (event.text.unicode != 13)
+	{
+		str += event.text.unicode;
+		number.setString(str);
+		//number.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 450);
+		num = num * 10 + event.text.unicode - '0';
+		return num;
+	}
+	return num;
+}
+
 void saveGamePVP() {
 	stringstream str;
 	string R = name.getString();
@@ -1658,8 +1822,6 @@ void loadGamePVC() {
 		cout << r << endl;
 		player.setString(r);
 
-		
-
 		fileIn >> turn;
 		cout << turn;
 		for (int i = 1; i <= turn; i++)
@@ -1696,6 +1858,7 @@ void saveViewPVP(int number) {
 	fileOut << turn << endl;
 	for (int i = 1; i <= turn; i++)
 		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+	fileOut << winX <<" "<< winY <<" "<< winer<<endl;
 }
 
 void saveViewPVC(int number) {
@@ -1713,6 +1876,7 @@ void saveViewPVC(int number) {
 	fileOut << turn << endl;
 	for (int i = 1; i <= turn; i++)
 		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+	fileOut << winX << " " << winY << " " << winer << endl;
 }
 
 void updatePVP(int winer) {
@@ -1798,7 +1962,6 @@ int main() {
 			state = MENU;
 		}
 
-
 		//EVENT
 
 		while (window.pollEvent(event))
@@ -1809,7 +1972,7 @@ int main() {
 			}
 			if (state == MENU && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 			{
-				//CHOOSE SIZE (ROW & COLUMN)
+
 				if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 					state = CHOOSE_SIZE;
 					Init();
@@ -1835,7 +1998,7 @@ int main() {
 					level = 3;
 					
 				}
-				//Resume game
+
 				if (resume && resumeGame.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 					state = PLAY;
 					resume = true;
@@ -1850,6 +2013,9 @@ int main() {
 					state = STATISTIC;
 					chooseModeToLoad = false;
 					loadPC = false;
+				}
+				if (aboutUs.getLocalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+					state = ABOUTUS;
 				}
 			}
 			else
@@ -1941,9 +2107,9 @@ int main() {
 									else B2[u][v] = false;
 									S.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
 									Save.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
-									player1Turn = !player1Turn;
 									turn++;
 									D[turn] = make_pair(player1Turn ? 1 : 2, make_pair(u, v));
+									player1Turn = !player1Turn;
 									//cout << turn << endl;
 								}
 								if (pcstate) {
@@ -1959,7 +2125,7 @@ int main() {
 										updatePVC(winer);
 									}
 									if (winer == 0) {
-										if (n <= 4) playLevel(playerIcon, n, 3, level);
+										if (n <= 3) playLevel(playerIcon, n, 3, level);
 										else if (n <= 6) playLevel(playerIcon, n, 4, level);
 										else playLevel(playerIcon, n, 5, level);
 										clock.restart();
@@ -1978,7 +2144,7 @@ int main() {
 							int x = D[i].second.first;
 							int y = D[i].second.second;
 							//cout << x << " " << y << endl;
-							if (n <= 4) winer = check(n, 3, x, y);
+							if (n <= 3) winer = check(n, 3, x, y);
 							else if (n <= 6) winer = check(n, 4, x, y);
 							else winer = check(n, 5, x, y);
 							winX = x;
@@ -2161,20 +2327,78 @@ int main() {
 			}
 			else
 			if (state == STATISTIC) {
-				if (!chooseModeToLoad && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
 					if (!chooseModeToLoad) {
 						if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 							loadPC = false;
 							chooseModeToLoad = true;
+							InitForStatistic(0);
 						}
 						if (pcMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 							loadPC = true;
 							chooseModeToLoad = true;
+							InitForStatistic(1);
 						}
+					}
+					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+						state = MENU;
 					}
 				}
 				if (chooseModeToLoad && event.type == sf::Event::TextEntered) {
+					int num = Number(event, enterNumber);
+					cout << num<<endl;
+					if (event.text.unicode == 13) {
+						if (num != 0 & num <= GAMES) {
+							if (loadPC) {
+								Init();
+								InitForViewPVC(num);
+								state = VIEW;
+								drawableInit = true;
+							}
+							else {
+								Init();
+								InitForViewPVP(num);
+								state = VIEW;
+								drawableInit = true;
+							}
+						}
+						else {
+							if (loadPC) InitForStatistic(1); else  InitForStatistic(0);
+							chooseNumberSucceed = false;
+						}
+					}
+				}
+			}
+			else 
+			if (state == VIEW) {
+				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+				{
+					if (sound.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+						if (playMusic) {
+							playMusic = false;
+							sound.setTexture(soundOffText);
+							music.pause();
+						}
+						else {
+							playMusic = true;
+							sound.setTexture(soundOnText);
+							music.play();
+						}
+					}
 
+					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+						state = MENU;
+						resume = true;
+						music.pause();
+						playMusic = false;
+						sound.setTexture(soundOffText);
+					}
+				}
+			}
+			else 
+			if (state == ABOUTUS && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+				if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+					state = MENU;
 				}
 			}
 		}
@@ -2193,17 +2417,13 @@ int main() {
 		}
 		else
 		if (state == PLAY) {
-			//cout << xScore << " " << oScore << endl;
 			stringstream text ;
 			text << xScore << " : " << oScore;
 			score.setString(text.str());
 			score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
 			winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
-			//cout << pcstate << endl;
-			//cout << n << endl;
 			boxSize = screenHeight / n;
 			board = n * boxSize;
-			//cout << boxSize << " " << board << endl;
 			gameBoard.setSize(sf::Vector2f(board, board));
 			gameBoard.setPosition(0, (screenHeight - board) / 2);
 			information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
@@ -2315,7 +2535,7 @@ int main() {
 					//Animation win 
 
 					if (winer != 3) {
-						if (n <= 4) putAnimationWin(winX, winY, 3);
+						if (n <= 3) putAnimationWin(winX, winY, 3);
 						else if (n <= 6) putAnimationWin(winX, winY, 4);
 						else putAnimationWin(winX, winY, 5);
 
@@ -2366,6 +2586,69 @@ int main() {
 				nameNoti.setString("The game you want to play: " + name.getString());
 				nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
 			}
+		}
+		else 
+		if (state == STATISTIC) {
+			if (chooseModeToLoad) {
+				numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 80);
+				xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 150);
+				oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2, 230);
+				draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2, 310);
+				enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 450);
+				back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
+				numberBox2.setPosition((screenWidth - numberBox2.getLocalBounds().width) / 2, 450);
+			}
+		}
+		else 
+		if (state == VIEW) {
+			stringstream text;
+			text << xScore << " : " << oScore;
+			score.setString(text.str());
+			score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
+			winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
+			boxSize = screenHeight / n;
+			board = n * boxSize;
+			gameBoard.setSize(sf::Vector2f(board, board));
+			gameBoard.setPosition(0, (screenHeight - board) / 2);
+			information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
+			information.setPosition(board, 0);
+			X = 0, Y = (screenHeight - board) / 2;
+			if (drawableInit) {
+				for (i = 1; i <= n; i++)
+				{
+					for (j = 1; j <= n; j++)
+					{
+						box[i][j].setSize(sf::Vector2f(boxSize, boxSize));
+						box[i][j].setPosition(X, Y);
+						X = X + boxSize;
+					}
+					Y = Y + boxSize;
+					X = 0;
+				}
+				drawableInit = false;
+			}
+			oBox.setPosition(615, 122);
+			xBox.setPosition(615, 42);
+			oBox.setTexture(oBoxText);
+			xBox.setTexture(xBoxText);
+
+			//PvC
+			if (pcstate) {
+				if (playerIcon == 1) {
+					player.setPosition(684, 50);
+					computer.setPosition(684, 140);
+				}
+				else {
+					player.setPosition(684, 140);
+					computer.setPosition(684, 50);
+				}
+			}
+
+
+		}
+		else 
+		if (state == ABOUTUS) {
+			back.setPosition(screenWidth - back.getGlobalBounds().width, screenHeight - back.getGlobalBounds().height);
 		}
 #pragma endregion 
 
@@ -2438,7 +2721,7 @@ int main() {
 				window.draw(player);
 				window.draw(computer);
 			}
-			if (n <= 4) window.draw(rule1);
+			if (n <= 3) window.draw(rule1);
 			else if (n <= 6) window.draw(rule2);
 			else window.draw(rule3);
 			if (winer > 0) {
@@ -2491,17 +2774,46 @@ int main() {
 				window.draw(ppMode);
 			}
 			else {
-				if (loadPC) {
-					window.draw(pvc);
-					window.draw(numberOfGame);
-					window.draw(xWin);
-					window.draw(oWin);
-					window.draw(draw);
-					window.draw(enterNumber);
-					window.draw(numberBox2);
-					window.draw(number);
-				}
+				window.draw(numberOfGame);
+				window.draw(xWin);
+				window.draw(oWin);
+				window.draw(draw);
+				window.draw(numberBox2);
+				//window.draw(loadButton);
+				window.draw(back);
+				window.draw(enterNumber);
+				//window.draw(number);	
 			}
+			break;
+		case VIEW:
+			window.draw(gameBoard);
+			for (i = 1; i <= n; i++)
+				for (j = 1; j <= n; j++)
+				{
+					window.draw(box[i][j]);
+				}
+			window.draw(sound);
+			window.draw(undo);
+			window.draw(back);
+			window.draw(save);
+			window.draw(xBox);
+			window.draw(oBox);
+			window.draw(scoreBoard);
+			window.draw(score);
+			if (!pcstate) {
+				window.draw(player1);
+				window.draw(player2);
+			}
+			else {
+				window.draw(player);
+				window.draw(computer);
+			}
+			if (n <= 3) window.draw(rule1);
+			else if (n <= 6) window.draw(rule2);
+			else window.draw(rule3);
+			break;
+		case ABOUTUS:
+			window.draw(back);
 			break;
 		}
 			
