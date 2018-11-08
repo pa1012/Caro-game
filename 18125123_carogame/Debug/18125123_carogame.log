@@ -1,72 +1,62 @@
 ﻿  18125123_carogame.cpp
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(174): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(180): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(389): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(394): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(398): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(402): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(412): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(407): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(411): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(415): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(565): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(568): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(571): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(574): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(577): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(580): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(583): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(586): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(589): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(592): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(595): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(598): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(425): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(428): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(578): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(581): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(584): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(587): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(590): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(593): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(596): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(599): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(602): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(605): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(609): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(613): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(617): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(621): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(625): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(629): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(633): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(637): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(640): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(643): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(608): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(611): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(615): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(618): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(622): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(626): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(630): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(634): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(638): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(642): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(646): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(650): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(654): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(657): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(660): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(653): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(656): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(659): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
 d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(663): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(666): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(669): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(672): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(675): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(678): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(681): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(684): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1686): warning C4018: '<': signed/unsigned mismatch
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1955): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1990): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(667): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(670): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(673): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(676): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(679): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(682): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(685): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(688): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(691): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(694): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(697): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1699): warning C4018: '<': signed/unsigned mismatch
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1967): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2002): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1994): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2006): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2001): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2008): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2016): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2013): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -76,17 +66,17 @@ d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2020): warnin
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2026): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2028): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2031): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2032): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2040): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2038): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -96,7 +86,7 @@ d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2043): warnin
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2048): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2052): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -106,57 +96,52 @@ d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2055): warnin
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2065): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2060): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2115): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2067): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2152): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2077): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2184): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2127): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2197): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2164): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2205): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2196): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2212): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2209): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2219): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2217): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2236): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2224): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2240): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2244): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2231): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -166,107 +151,122 @@ d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2248): warnin
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2255): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2252): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2269): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2256): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2273): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2260): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2293): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2267): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2297): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2281): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2303): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2285): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2307): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2305): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2350): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2309): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2355): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2315): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2361): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2319): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2369): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2394): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2362): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2407): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2367): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2418): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2373): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2445): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2381): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2406): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2446): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2447): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2419): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2448): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2455): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2430): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2456): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2629): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2457): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2630): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2631): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2458): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2459): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2632): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2639): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2460): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2467): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2640): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1676): warning C4715: 'enterName': not all control paths return a value
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2468): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2641): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2642): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2643): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2644): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2651): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(2652): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\cs161\18125123_carogame\18125123_carogame\18125123_carogame.cpp(1689): warning C4715: 'enterName': not all control paths return a value
   18125123_carogame.vcxproj -> D:\cs161\18125123_carogame\Debug\18125123_carogame.exe

@@ -188,7 +188,7 @@ void InitForSaveAndLoad() {
 
 void InitForStatistic(int x) {
 	chooseNumberSucceed = false;
-	int countGame, numberOfWinX, numberOfWinO, numberOfDraw;
+	int countGame, numberOfWinX, numberOfWinO, numberOfDraw,numberOfPlayerWin,numberOfComputerWin;
 	if (x == 0) {
 		ifstream fileIn("Data/Statistics/PVP/summary.txt");
 		fileIn >> countGame;
@@ -200,8 +200,8 @@ void InitForStatistic(int x) {
 	else {
 		ifstream fileIn("Data/Statistics/PVC/summary.txt");
 		fileIn >> countGame;
-		fileIn >> numberOfWinX;
-		fileIn >> numberOfWinO;
+		fileIn >> numberOfPlayerWin;
+		fileIn >> numberOfComputerWin;
 		fileIn >> numberOfDraw;
 		GAMES = countGame;
 	}
@@ -215,19 +215,32 @@ void InitForStatistic(int x) {
 	numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 50);
 
 	str.str("");
-	str << numberOfWinX;
+	
+	if (x == 1) {
+		str << numberOfPlayerWin;
+		xWin.setString("Player Win: " + str.str());
+	}
+	else {
+		str << numberOfWinX;
+		xWin.setString("X WIN: " + str.str());
+	}
 	xWin.setFont(font);
 	xWin.setFillColor(sf::Color::White);
 	xWin.setCharacterSize(30);
-	xWin.setString("X WIN: " + str.str());
 	xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 130);
 
 	str.str("");
-	str << numberOfWinO;
+	if (x == 1) {
+		str << numberOfComputerWin;
+		oWin.setString("Computer Win: " + str.str());
+	}
+	else {
+		str << numberOfWinO;
+		oWin.setString("O WIN: " + str.str());
+	}
 	oWin.setFont(font);
 	oWin.setFillColor(sf::Color::White);
 	oWin.setCharacterSize(30);
-	oWin.setString("O WIN: " + str.str() );
 	oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2, 210);
 
 	str.str("");
@@ -261,9 +274,9 @@ void InitForViewPVP(int num) {
 
 	if (fileIn.is_open()) {
 		fileIn >> n;
-		cout << n << endl;
+		//cout << n << endl;
 		fileIn >> xScore >> oScore;
-		cout << xScore << " " << oScore << endl;
+		//cout << xScore << " " << oScore << endl;
 
 		char s[100];
 
@@ -272,16 +285,16 @@ void InitForViewPVP(int num) {
 		fileIn.getline(s, 100);
 		string r;
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player1.setString(r);
 
 		fileIn.getline(s, 100);
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player2.setString(r);
 
 		fileIn >> turn;
-		cout << turn;
+		//cout << turn;
 		for (int i = 1; i <= turn; i++)
 		{
 			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
@@ -297,7 +310,7 @@ void InitForViewPVP(int num) {
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
-			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+			//cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
 		}
 		fileIn >> winX >> winY >> winer;
 	}
@@ -312,13 +325,13 @@ void InitForViewPVC(int num) {
 
 	if (fileIn.is_open()) {
 		fileIn >> n;
-		cout << n << endl;
+		//cout << n << endl;
 
 		fileIn >> xScore >> oScore;
-		cout << xScore << " " << oScore << endl;
+		//cout << xScore << " " << oScore << endl;
 
 		fileIn >> playerIcon;
-		cout << playerIcon << endl;
+		//cout << playerIcon << endl;
 
 		char s[100];
 
@@ -327,11 +340,11 @@ void InitForViewPVC(int num) {
 		fileIn.getline(s, 100);
 		string r;
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player.setString(r);
 
 		fileIn >> turn;
-		cout << turn;
+		//cout << turn;
 		for (int i = 1; i <= turn; i++)
 		{
 			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
@@ -347,7 +360,7 @@ void InitForViewPVC(int num) {
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
-			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+			//cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
 		}
 		fileIn >> winX >> winY >> winer;
 	}
@@ -693,7 +706,7 @@ void loadData() {
 
 	//Font
 	if (font.loadFromFile("Data/VNI-Avo.ttf") == 0) {
-		cout << "Not able to load font " << endl;
+		
 		return;
 	}
 }
@@ -1741,9 +1754,9 @@ void loadGamePVP() {
 	}
 	if (fileIn.is_open()) {
 		fileIn >> n;
-		cout << n << endl;
+		//cout << n << endl;
 		fileIn >> xScore >> oScore;
-		cout << xScore << " " << oScore << endl;
+		//cout << xScore << " " << oScore << endl;
 
 		char s[100];
 
@@ -1752,16 +1765,16 @@ void loadGamePVP() {
 		fileIn.getline(s, 100);
 		string r;
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player1.setString(r);
 
 		fileIn.getline(s, 100);
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player2.setString(r);
 
 		fileIn >> turn;
-		cout << turn;
+		//cout << turn;
 		for (int i = 1; i <= turn; i++)
 		{
 			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
@@ -1777,7 +1790,7 @@ void loadGamePVP() {
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
-			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+			//cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
 		}
 	}
 }
@@ -1818,13 +1831,13 @@ void loadGamePVC() {
 	}
 	if (fileIn.is_open()) {
 		fileIn >> n;
-		cout << n << endl;
+		//cout << n << endl;
 
 		fileIn >> xScore >> oScore;
-		cout << xScore << " " << oScore << endl;
+		//cout << xScore << " " << oScore << endl;
 
 		fileIn >> playerIcon;
-		cout << playerIcon << endl;
+		//cout << playerIcon << endl;
 
 		char s[100];
 
@@ -1833,11 +1846,11 @@ void loadGamePVC() {
 		fileIn.getline(s, 100);
 		string r;
 		r = s;
-		cout << r << endl;
+		//cout << r << endl;
 		player.setString(r);
 
 		fileIn >> turn;
-		cout << turn;
+		//cout << turn;
 		for (int i = 1; i <= turn; i++)
 		{
 			fileIn >> D[i].first >> D[i].second.first >> D[i].second.second;
@@ -1853,7 +1866,7 @@ void loadGamePVC() {
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
-			cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
+			//cout << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
 		}
 	}
 }
@@ -1893,44 +1906,43 @@ void saveViewPVC(int number) {
 	fileOut << winX << " " << winY << " " << winer << endl;
 }
 
+void updatePVC(int winer) {
+	ifstream fileIn("Data/Statistics/PVC/summary.txt");
+	int countGame, numberOfPlayerWin, numberOfComputerWin, numberOfDraw;
+	fileIn >> countGame;
+	fileIn >> numberOfPlayerWin;
+	fileIn >> numberOfComputerWin;
+	fileIn >> numberOfDraw;
+	//cout<< countGame << " " << numberOfPlayerWin << " " << numberOfComputerWin << " " << numberOfDraw<<endl;
+	countGame++;
+	if (winer == 3) numberOfDraw++;
+	else
+		if (winer == playerIcon) numberOfPlayerWin++;
+		else numberOfComputerWin++;
+	//cout << countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw<<endl;
+	ofstream fileOut("Data/Statistics/PVC/summary.txt");
+	fileOut.clear();
+	fileOut << countGame << " " << numberOfPlayerWin << " " << numberOfComputerWin << " " << numberOfDraw;
+	saveViewPVC(countGame);
+}
+
 void updatePVP(int winer) {
-	
 	ifstream fileIn("Data/Statistics/PVP/summary.txt");
 	int countGame, numberOfWinX, numberOfWinO, numberOfDraw;
 	fileIn >> countGame;
 	fileIn >> numberOfWinX;
 	fileIn >> numberOfWinO;
 	fileIn >> numberOfDraw;
-	cout<< countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw<<endl;
+	
 	countGame++;
 	if (winer == 1) numberOfWinX++;
 	if (winer == 2) numberOfWinO++;
 	if (winer == 3) numberOfDraw++;
-	cout << countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw<<endl;
+	
 	ofstream fileOut("Data/Statistics/PVP/summary.txt");
 	fileOut.clear();
-	fileOut << countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw;
-	saveViewPVP(countGame);
-
-}
-
-void updatePVC(int winer) {
-	ifstream fileIn("Data/Statistics/PVC/summary.txt");
-	int countGame, numberOfWinX, numberOfWinO, numberOfDraw;
-	fileIn >> countGame;
-	fileIn >> numberOfWinX;
-	fileIn >> numberOfWinO;
-	fileIn >> numberOfDraw;
-	
-	countGame++;
-	if (winer == 1) numberOfWinX++;
-	if (winer == 2) numberOfWinO++;
-	if (winer == 3) numberOfDraw++;
-	
-	ofstream fileOut("Data/Statistics/PVC/summary.txt");
-	fileOut.clear();
 	fileOut << countGame<<" "<<numberOfWinX<<" "<<numberOfWinO<<" "<<numberOfDraw;
-	saveViewPVC(countGame);
+	saveViewPVP(countGame);
 }
 
 
@@ -2364,7 +2376,7 @@ int main() {
 				}
 				if (chooseModeToLoad && event.type == sf::Event::TextEntered) {
 					int num = Number(event, enterNumber);
-					cout << num<<endl;
+					//cout << num<<endl;
 					if (event.text.unicode == 13) {
 						if (num != 0 & num <= GAMES) {
 							if (loadPC) {
@@ -2405,11 +2417,11 @@ int main() {
 					}
 
 					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = MENU;
-						resume = true;
+						state = STATISTIC;
 						music.pause();
 						playMusic = false;
 						sound.setTexture(soundOffText);
+						chooseModeToLoad = false;
 					}
 				}
 			}
