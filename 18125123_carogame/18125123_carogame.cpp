@@ -40,7 +40,7 @@ bool playerTurn = true;
 int level = 0;
 int turn = 0;
 long long attack[7] = { 0,3,27,99,729,6561,59049 };
-long long defense[7] = { 0,9,54,162,1458,13112,118008};
+long long defense[7] = { 0,9,54,162,1458,13112,118008 };
 int winX, winY;
 bool enterTextPlayer1 = false, enterTextPlayer2 = false, enterTextPlayer = false;
 int xScore = 0, oScore = 0;
@@ -48,7 +48,7 @@ bool still = false; //continue play
 bool enterNameFile = false;
 bool enterNameSucceed = false;
 bool loadError = false;
-bool chooseModeToLoad,loadPC;
+bool chooseModeToLoad, loadPC;
 int GAMES = 0;
 bool chooseNumberSucceed = false;
 bool backgroundOn = true;
@@ -56,7 +56,7 @@ bool chooseRuleSucceed = false;
 iii D[MAXN * MAXN];
 stack <iii> S, Save;
 enum GameState {
-	SPLASH, MENU, PLAY, END, CHOOSE_SIZE, CHOOSEMODE, STATISTIC, SAVE, WIN,LOAD,VIEW,ABOUTUS
+	SPLASH, MENU, PLAY, END, CHOOSE_SIZE, CHOOSEMODE, STATISTIC, SAVE, WIN, LOAD, VIEW, ABOUTUS
 };
 GameState state = SPLASH;
 
@@ -68,7 +68,7 @@ sf::Texture soundOnText, soundOffText, undoText, backText, bigXBoxText, bigOBoxT
 sf::Texture winText, continueplayText, exitText;
 sf::Texture smallXText, smallOText;
 sf::Texture blackXText, blackOText;
-sf::Texture saveText, loadText,aboutUsText;
+sf::Texture saveText, loadText, aboutUsText;
 sf::Texture scoreText;
 sf::Texture saveButtonText;
 sf::Texture loadButtonText;
@@ -81,7 +81,7 @@ sf::Sprite chooseSize, numberBox, numberBox2, chooseIcon, xBox, oBox, start;
 sf::Sprite sound, undo, back;
 sf::Sprite win, continuePlay;
 sf::Sprite exitBox;
-sf::Sprite save, load,aboutUs;
+sf::Sprite save, load, aboutUs;
 sf::Sprite scoreBoard;
 sf::Sprite saveButton;
 sf::Sprite loadButton;
@@ -102,7 +102,7 @@ sf::Text playText, noti;
 sf::Text winNoti;
 sf::Text player, computer;
 sf::Text score;
-sf::Text asking, name,nameNoti;
+sf::Text asking, name, nameNoti;
 sf::Text pvc, numberOfGame, xWin, oWin, draw, enterNumber;
 sf::Text rule[9];
 
@@ -188,7 +188,7 @@ void InitForSaveAndLoad() {
 
 void InitForStatistic(int x) {
 	chooseNumberSucceed = false;
-	int countGame, numberOfWinX, numberOfWinO, numberOfDraw,numberOfPlayerWin,numberOfComputerWin;
+	int countGame, numberOfWinX, numberOfWinO, numberOfDraw, numberOfPlayerWin, numberOfComputerWin;
 	if (x == 0) {
 		ifstream fileIn("Data/Statistics/PVP/summary.txt");
 		fileIn >> countGame;
@@ -215,7 +215,7 @@ void InitForStatistic(int x) {
 	numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 50);
 
 	str.str("");
-	
+
 	if (x == 1) {
 		str << numberOfPlayerWin;
 		xWin.setString("Player Win: " + str.str());
@@ -250,14 +250,14 @@ void InitForStatistic(int x) {
 	draw.setCharacterSize(30);
 	draw.setString("DRAW: " + str.str());
 	draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2, 290);
-	
+
 
 	//enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 460);
 	enterNumber.setFont(font);
 	enterNumber.setFillColor(sf::Color::Black);
 	enterNumber.setCharacterSize(35);
 	enterNumber.setString("|");
-	enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2 -1, 460);
+	enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2 - 1, 460);
 
 	back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
 
@@ -395,7 +395,7 @@ void Init() {
 	pcstate = false;
 	chooseIconSucceed = false;
 	winX = 0; winY = 0;
-	
+
 	//gameName
 	int posXName = (screenWidth - gameNameWidth) / 2, posYName = (screenHeight - gameNameHeight) / 2;
 	gameName.setTexture(gameNameText);
@@ -570,8 +570,8 @@ void Init() {
 	music.pause();
 
 	//SAVING
-	
-	
+
+
 }
 
 void loadData() {
@@ -706,7 +706,7 @@ void loadData() {
 
 	//Font
 	if (font.loadFromFile("Data/VNI-Avo.ttf") == 0) {
-		
+
 		return;
 	}
 }
@@ -803,7 +803,7 @@ int check(int n, int k, int u, int v) {
 
 #pragma region PVC
 void doIt(bool &undostate, int icon) {
-	
+
 	if (!S.empty()) {
 		int u = S.top().second.first;
 		int v = S.top().second.second;
@@ -828,7 +828,7 @@ void doIt(bool &undostate, int icon) {
 		}
 		S.pop();
 	}
-	
+
 	if (undostate && !Save.empty()) {
 		int x = Save.top().second.first;
 		int y = Save.top().second.second;
@@ -904,7 +904,7 @@ long long attackVertical(int u, int v, int icon, int k) {
 		else break;
 	}
 	if (level == 3 && countPlayer == 0 && countCom == k - 2) return 100000;
-	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k - 1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -941,7 +941,7 @@ long long attackHorizontal(int u, int v, int icon, int k) {
 		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k - 1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -980,7 +980,7 @@ long long attackCross(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k - 1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -1020,7 +1020,7 @@ long long attackReverse(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countPlayer == 1 && countCom == k-1) return 10000000;
+	if (level == 3 && countPlayer == 1 && countCom == k - 1) return 10000000;
 	if (countPlayer == 2) return 0;
 	//if (level == 3) return sum + attack[countCom];
 	sum -= defense[countPlayer + 1];
@@ -1057,7 +1057,7 @@ long long defenseVertical(int u, int v, int icon, int k) {
 		//else if (level == 3 && u - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
+	if (level == 3 && countCom == 1 && countPlayer == k - 2) return 9;
 	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 1000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1072,7 +1072,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && v + i <= n; i++) {
 		if (!B[3 - icon][u][v + i]) {
 			countCom++;
-			if (level == 3) sum -- ;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u][v + i]) {
@@ -1084,7 +1084,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && v - i > 0; i++) {
 		if (!B[3 - icon][u][v - i]) {
 			countCom++;
-			if (level == 3) sum -- ;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u][v - i]) {
@@ -1093,7 +1093,7 @@ long long defenseHorizontal(int u, int v, int icon, int k) {
 		//else if (level == 3 && v - i == 1) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
+	if (level == 3 && countCom == 1 && countPlayer == k - 2) return 9;
 	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1109,7 +1109,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n && v + i <= n; i++) {
 		if (!B[3 - icon][u + i][v + i]) {
 			countCom++;
-			if (level == 3) sum --;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u + i][v + i]) {
@@ -1122,7 +1122,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0 && v - i > 0; i++) {
 		if (!B[3 - icon][u - i][v - i]) {
 			countCom++;
-			if (level == 3) sum --;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u - i][v - i]) {
@@ -1131,7 +1131,7 @@ long long defenseCross(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u - i == 1 || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
+	if (level == 3 && countCom == 1 && countPlayer == k - 2) return 9;
 	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1146,7 +1146,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u - i > 0 && v + i <= n; i++) {
 		if (!B[3 - icon][u - i][v + i]) {
 			countCom++;
-			if (level == 3) sum --;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u - i][v + i]) {
@@ -1159,7 +1159,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 	for (int i = 1; i <= k && u + i <= n && v - i > 0; i++) {
 		if (!B[3 - icon][u + i][v - i]) {
 			countCom++;
-			if (level == 3) sum --;
+			if (level == 3) sum--;
 			break;
 		}
 		else if (!B[icon][u + i][v - i]) {
@@ -1168,7 +1168,7 @@ long long defenseReverse(int u, int v, int icon, int k) {
 		//else if (level == 3 && (u + i == n || v - i == 1)) sum--;
 		else break;
 	}
-	if (level == 3 && countCom == 1 && countPlayer == k-2) return 9;
+	if (level == 3 && countCom == 1 && countPlayer == k - 2) return 9;
 	//if (level == 3 && countCom == 0 && countPlayer == k-2) return 100000;
 	if (countCom == 2) return 0;
 	sum += defense[countPlayer];
@@ -1204,17 +1204,17 @@ void playLevel(int icon, int n, int k, int level) {
 	if (level == 1) {
 		attack[0] = 0;
 		attack[1] = 10;
-		attack[2] = 100; 
+		attack[2] = 100;
 		attack[3] = 1000;
-		attack[4] = 10000; 
+		attack[4] = 10000;
 		attack[5] = 100000;
 		attack[6] = 1000000;
 
-		defense[0] = 0; 
+		defense[0] = 0;
 		defense[1] = 10;
 		defense[2] = 100;
 		defense[3] = 1000;
-		defense[4] = 10000; 
+		defense[4] = 10000;
 		defense[5] = 100000;
 		defense[6] = 1000000;
 	}
@@ -1233,7 +1233,7 @@ void playLevel(int icon, int n, int k, int level) {
 		defense[3] = 81;
 		defense[4] = 729;
 		defense[5] = 6561;
-		defense[6] = 59049;		
+		defense[6] = 59049;
 	}
 	if (level == 3) {
 		attack[0] = 0;
@@ -1287,18 +1287,18 @@ void putHorizontal(int u, int v, int icon) {
 
 	for (int i = 0; i <= 6 && v + i <= n; i++)
 	{
-		if (B[icon][u][v+i]) break;
-		if (!B[icon][u][v+i]) {
+		if (B[icon][u][v + i]) break;
+		if (!B[icon][u][v + i]) {
 			if (icon == 1) box[u][v + i].setTexture(&blackXText);
-			else box[u][v+i].setTexture(&blackOText);
+			else box[u][v + i].setTexture(&blackOText);
 		}
 	}
 	for (int i = 0; i <= 6 && v - i > 0; i++)
 	{
-		if (B[icon][u][v-i]) break;
-		if (!B[icon][u][v-i]) {
-			if (icon == 1) box[u][v-i].setTexture(&blackXText);
-			else box[u][v-i].setTexture(&blackOText);
+		if (B[icon][u][v - i]) break;
+		if (!B[icon][u][v - i]) {
+			if (icon == 1) box[u][v - i].setTexture(&blackXText);
+			else box[u][v - i].setTexture(&blackOText);
 		}
 	}
 
@@ -1306,20 +1306,20 @@ void putHorizontal(int u, int v, int icon) {
 
 void putCross(int u, int v, int icon) {
 
-	for (int i = 0; i <= 6 && u + i <= n && v+ i <=n; i++)
+	for (int i = 0; i <= 6 && u + i <= n && v + i <= n; i++)
 	{
-		if (B[icon][u + i][v+i]) break;
-		if (!B[icon][u + i][v+i]) {
-			if (icon == 1) box[u + i][v+i].setTexture(&blackXText);
-			else box[u + i][v+i].setTexture(&blackOText);
+		if (B[icon][u + i][v + i]) break;
+		if (!B[icon][u + i][v + i]) {
+			if (icon == 1) box[u + i][v + i].setTexture(&blackXText);
+			else box[u + i][v + i].setTexture(&blackOText);
 		}
 	}
-	for (int i = 0; i <= 6 && u - i > 0 && v -i > 0; i++)
+	for (int i = 0; i <= 6 && u - i > 0 && v - i > 0; i++)
 	{
 		if (B[icon][u - i][v - i]) break;
-		if (!B[icon][u - i][v-i]) {
-			if (icon == 1) box[u -i][v-i].setTexture(&blackXText);
-			else box[u - i][v-i].setTexture(&blackOText);
+		if (!B[icon][u - i][v - i]) {
+			if (icon == 1) box[u - i][v - i].setTexture(&blackXText);
+			else box[u - i][v - i].setTexture(&blackOText);
 		}
 	}
 
@@ -1330,7 +1330,7 @@ void putReverse(int u, int v, int icon) {
 	for (int i = 0; i <= 6 && u - i > 0 && v + i <= n; i++)
 	{
 		if (B[icon][u - i][v + i]) break;
-		if (!B[icon][u - i][v +i]) {
+		if (!B[icon][u - i][v + i]) {
 			if (icon == 1) box[u - i][v + i].setTexture(&blackXText);
 			else box[u - i][v + i].setTexture(&blackOText);
 		}
@@ -1339,7 +1339,7 @@ void putReverse(int u, int v, int icon) {
 	{
 		if (B[icon][u + i][v - i]) break;
 		if (!B[icon][u + i][v - i]) {
-			if (icon == 1) box[u + i][v- i].setTexture(&blackXText);
+			if (icon == 1) box[u + i][v - i].setTexture(&blackXText);
 			else box[u + i][v - i].setTexture(&blackOText);
 		}
 	}
@@ -1525,7 +1525,7 @@ void Cross(int u, int v, int k) {
 	}
 
 	count1 = 0; count2 = 0;
-	for (int i = 0; i < k && u - i > 0  && v-i> 0; i++) {
+	for (int i = 0; i < k && u - i > 0 && v - i > 0; i++) {
 		if (!B1[u - i][v - i]) count1++;
 		if (!B2[u - i][v - i]) count2++;
 	}
@@ -1585,7 +1585,7 @@ void Vertical(int u, int v, int k) {
 
 	int count1 = 0, count2 = 0;
 
-	for (int i = 0; i < k && u - i > 0 ; i++) {
+	for (int i = 0; i < k && u - i > 0; i++) {
 		if (!B1[u - i][v]) count1++;
 		if (!B2[u - i][v]) count2++;
 	}
@@ -1641,7 +1641,7 @@ void Horizontal(int u, int v, int k) {
 	}
 
 	count1 = 0; count2 = 0;
-	for (int i = 0; i < k &&  v - i > 0; i++) {
+	for (int i = 0; i < k && v - i > 0; i++) {
 		if (!B1[u][v - i]) count1++;
 		if (!B2[u][v - i]) count2++;
 	}
@@ -1668,7 +1668,7 @@ void putAnimationWin(int u, int v, int k) {
 
 #pragma endregion
 
-bool enterName(sf::Text &name,sf::Event event) {
+bool enterName(sf::Text &name, sf::Event event) {
 	sf::String str = name.getString();
 	if (str == "| ") str = "";
 	if (event.text.unicode == 8) {
@@ -1721,7 +1721,7 @@ int Number(sf::Event event, sf::Text &number) {
 void saveGamePVP() {
 	stringstream str;
 	string R = name.getString();
-	str <<"Data/PVP/"<<R<<".txt";
+	str << "Data/PVP/" << R << ".txt";
 	string fileName = str.str();
 
 	ofstream fileOut(fileName.c_str());
@@ -1740,7 +1740,7 @@ void saveGamePVP() {
 }
 
 void loadGamePVP() {
-	
+
 	string R = name.getString();
 	stringstream str;
 	str << "Data/PVP/" << R << ".txt";
@@ -1810,7 +1810,7 @@ void saveGamePVC() {
 
 	string s = player.getString();
 	fileOut << s << endl;
-	
+
 	fileOut << turn << endl;
 	for (int i = 1; i <= turn; i++)
 		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
@@ -1885,7 +1885,7 @@ void saveViewPVP(int number) {
 	fileOut << turn << endl;
 	for (int i = 1; i <= turn; i++)
 		fileOut << D[i].first << " " << D[i].second.first << " " << D[i].second.second << endl;
-	fileOut << winX <<" "<< winY <<" "<< winer<<endl;
+	fileOut << winX << " " << winY << " " << winer << endl;
 }
 
 void saveViewPVC(int number) {
@@ -1933,15 +1933,15 @@ void updatePVP(int winer) {
 	fileIn >> numberOfWinX;
 	fileIn >> numberOfWinO;
 	fileIn >> numberOfDraw;
-	
+
 	countGame++;
 	if (winer == 1) numberOfWinX++;
 	if (winer == 2) numberOfWinO++;
 	if (winer == 3) numberOfDraw++;
-	
+
 	ofstream fileOut("Data/Statistics/PVP/summary.txt");
 	fileOut.clear();
-	fileOut << countGame<<" "<<numberOfWinX<<" "<<numberOfWinO<<" "<<numberOfDraw;
+	fileOut << countGame << " " << numberOfWinX << " " << numberOfWinO << " " << numberOfDraw;
 	saveViewPVP(countGame);
 }
 
@@ -2008,21 +2008,21 @@ int main() {
 					Init();
 					pcstate = true;
 					level = 1;
-					
+
 				}
 				if (pc2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 					state = CHOOSE_SIZE;
 					Init();
 					pcstate = true;
 					level = 2;
-					
+
 				}
 				if (pc3.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
 					state = CHOOSE_SIZE;
 					Init();
 					pcstate = true;
 					level = 3;
-					
+
 				}
 
 				if (resume && resumeGame.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
@@ -2045,641 +2045,641 @@ int main() {
 				}
 			}
 			else
-			if (state == CHOOSE_SIZE) {
+				if (state == CHOOSE_SIZE) {
+					cout << numberBox.getGlobalBounds().width << endl;
+					//Choose Icon
+					if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+						if (numberBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+							enter = true;
+						}
+						if (chooseSizeSucceed && xBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+							playerIcon = 1;
+							xBox.setTexture(smallXText);
+							chooseIconSucceed = true;
+						}
+						if (chooseSizeSucceed && oBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+							playerIcon = 2;
+							oBox.setTexture(smallOText);
+							chooseIconSucceed = true;
+						}
 
-				//Choose Icon
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-					if (numberBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						enter = true;
-					}
-					if (chooseSizeSucceed && xBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						playerIcon = 1;
-						xBox.setTexture(smallXText);
-						chooseIconSucceed = true;
-					}
-					if (chooseSizeSucceed && oBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						playerIcon = 2;
-						oBox.setTexture(smallOText);
-						chooseIconSucceed = true;
-					}
-
-					//Press start
-					if (!pcstate && start.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
-					{
-						state = PLAY;
-						xScore = 0;
-						oScore = 0;
-						score.setString("0 : 0");
-						score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
-						drawableInit = true;
-					}
-					
-					if (pcstate && start.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
-					{
-						state = PLAY;
-						xScore = 0;
-						oScore = 0;
-						score.setString("0 : 0");
-						score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
-						drawableInit = true;
-					}
-				}
-					
-				// Choose size of gameboard
-				if (event.type == sf::Event::TextEntered)
-				{
-					if (event.text.unicode == 8) {
-						n /= 10;
-						if (playInput.getSize())
-							playInput.erase(playInput.getSize() - 1, playInput.getSize());
-						playText.setString(playInput);
-					}
-					else
-						if (event.text.unicode != 13)
+						//Press start
+						if (!pcstate && start.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
 						{
-							n = n * 10 + event.text.unicode - '0';
-							playInput += event.text.unicode;
+							state = PLAY;
+							xScore = 0;
+							oScore = 0;
+							score.setString("0 : 0");
+							score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
+							drawableInit = true;
+						}
+
+						if (pcstate && start.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+						{
+							state = PLAY;
+							xScore = 0;
+							oScore = 0;
+							score.setString("0 : 0");
+							score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
+							drawableInit = true;
+						}
+					}
+
+					// Choose size of gameboard
+					if (event.type == sf::Event::TextEntered)
+					{
+						if (event.text.unicode == 8) {
+							n /= 10;
+							if (playInput.getSize())
+								playInput.erase(playInput.getSize() - 1, playInput.getSize());
 							playText.setString(playInput);
 						}
-						else {
-							if (n > 20 || n < 3)
+						else
+							if (event.text.unicode != 13)
 							{
-								playInput = "";
+								n = n * 10 + event.text.unicode - '0';
+								playInput += event.text.unicode;
 								playText.setString(playInput);
-								n = 0;
 							}
 							else {
-								chooseSizeSucceed = true;
-								noti.setString("The size of gameboard: " + playInput + "x" + playInput + ".");
-							}
-						}
-				}		
-			}
-			else
-			if (state == PLAY  )
-			{
-				//u, v;
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-				{
-					for (i = 1; i <= n && winer == 0; i++)
-						for (j = 1; j <= n && winer == 0; j++)
-						{
-							if (B[1][i][j] && B[2][i][j] && B1[i][j] && B2[i][j] && box[i][j].getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-								u = i;
-								v = j;
-								click.play();
-								if (!pcstate) {
-									if (player1Turn) B1[u][v] = false;
-									else B2[u][v] = false;
-									S.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
-									Save.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
-									turn++;
-									D[turn] = make_pair(player1Turn ? 1 : 2, make_pair(u, v));
-									player1Turn = !player1Turn;
-									//cout << turn << endl;
+								if (n > 20 || n < 3)
+								{
+									playInput = "";
+									playText.setString(playInput);
+									n = 0;
 								}
-								if (pcstate) {
-									B[playerIcon][u][v] = false;
-									S.push(make_pair(playerIcon, make_pair(u, v)));
-									Save.push(make_pair(playerIcon, make_pair(u, v)));
-									turn++;
-									D[turn] = make_pair(playerIcon, make_pair(u, v));
-									if (winer == 0) checkWinPC();
+								else {
+									chooseSizeSucceed = true;
+									noti.setString("The size of gameboard: " + playInput + "x" + playInput + ".");
+								}
+							}
+					}
+				}
+				else
+					if (state == PLAY)
+					{
+						//u, v;
+						if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+						{
+							for (i = 1; i <= n && winer == 0; i++)
+								for (j = 1; j <= n && winer == 0; j++)
+								{
+									if (B[1][i][j] && B[2][i][j] && B1[i][j] && B2[i][j] && box[i][j].getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+										u = i;
+										v = j;
+										click.play();
+										if (!pcstate) {
+											if (player1Turn) B1[u][v] = false;
+											else B2[u][v] = false;
+											S.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
+											Save.push(make_pair(player1Turn ? 1 : 2, make_pair(u, v)));
+											turn++;
+											D[turn] = make_pair(player1Turn ? 1 : 2, make_pair(u, v));
+											player1Turn = !player1Turn;
+											//cout << turn << endl;
+										}
+										if (pcstate) {
+											B[playerIcon][u][v] = false;
+											S.push(make_pair(playerIcon, make_pair(u, v)));
+											Save.push(make_pair(playerIcon, make_pair(u, v)));
+											turn++;
+											D[turn] = make_pair(playerIcon, make_pair(u, v));
+											if (winer == 0) checkWinPC();
+											if (winer > 0) {
+												clock.restart();
+												if (winer == 1) xScore++; else oScore++;
+												updatePVC(winer);
+											}
+											if (winer == 0) {
+												if (n <= 3) playLevel(playerIcon, n, 3, level);
+												else if (n <= 6) playLevel(playerIcon, n, 4, level);
+												else playLevel(playerIcon, n, 5, level);
+												clock.restart();
+											}
+										}
+										break;
+									}
+								}
+
+							if (undo.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								undostate = true;
+							}
+
+							if (!pcstate && !undostate && winer == 0)
+							{
+								for (int i = turn; i >= 1 && winer == 0; i--) {
+									int x = D[i].second.first;
+									int y = D[i].second.second;
+									//cout << x << " " << y << endl;
+									if (n <= 3) winer = check(n, 3, x, y);
+									else if (n <= 6) winer = check(n, 4, x, y);
+									else winer = check(n, 5, x, y);
+									winX = x;
+									winY = y;
 									if (winer > 0) {
 										clock.restart();
 										if (winer == 1) xScore++; else oScore++;
-										updatePVC(winer);
-									}
-									if (winer == 0) {
-										if (n <= 3) playLevel(playerIcon, n, 3, level);
-										else if (n <= 6) playLevel(playerIcon, n, 4, level);
-										else playLevel(playerIcon, n, 5, level);
-										clock.restart();
+										updatePVP(winer);
 									}
 								}
-								break;
 							}
-						}
 
-					if (undo.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						undostate = true;
-					}
-					
-					if (!pcstate && !undostate && winer == 0)
-					{
-						for (int i = turn; i >= 1 && winer == 0; i--) {
-							int x = D[i].second.first;
-							int y = D[i].second.second;
-							//cout << x << " " << y << endl;
-							if (n <= 3) winer = check(n, 3, x, y);
-							else if (n <= 6) winer = check(n, 4, x, y);
-							else winer = check(n, 5, x, y);
-							winX = x;
-							winY = y;
-							if (winer > 0) {
-								clock.restart();
-								if (winer == 1) xScore++; else oScore++;
-								updatePVP(winer);
+							if (pcstate && !undostate  && winer == 0) {
+								checkWinPC();
+								if (winer > 0) {
+									clock.restart();
+									if (winer == 2) oScore++; else xScore++;
+									updatePVC(winer);
+								}
 							}
-						}
-					}
-					
-					if (pcstate && !undostate  && winer == 0) {
-						checkWinPC();
-						if (winer > 0) {
-							clock.restart();
-							if (winer == 2) oScore++; else xScore++;
-							updatePVC(winer);
-						}
-					}
-					
-					if (sound.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						if (playMusic) {
-							playMusic = false;
-							sound.setTexture(soundOffText);
-							music.pause();
-						}
-						else {
-							playMusic = true;
-							sound.setTexture(soundOnText);
-							music.play();
-						}
-					}
-					
-					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = MENU;
-						resume = true;
-						music.pause();
-						playMusic = false;
-						sound.setTexture(soundOffText);
-					}
-					
-					if (clock.getElapsedTime().asSeconds() >= 1.0f && pcstate && winer > 0 && continuePlay.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						still = true;
-						Init();
-						pcstate = true;
 
-					}
+							if (sound.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								if (playMusic) {
+									playMusic = false;
+									sound.setTexture(soundOffText);
+									music.pause();
+								}
+								else {
+									playMusic = true;
+									sound.setTexture(soundOnText);
+									music.play();
+								}
+							}
 
-					if (clock.getElapsedTime().asSeconds() >= 1.0f && !pcstate && winer > 0 && continuePlay.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						still = true;
-						Init();
-						pcstate = false;
-						playerIcon = 0;
+							if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								state = MENU;
+								resume = true;
+								music.pause();
+								playMusic = false;
+								sound.setTexture(soundOffText);
+							}
+
+							if (clock.getElapsedTime().asSeconds() >= 1.0f && pcstate && winer > 0 && continuePlay.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								still = true;
+								Init();
+								pcstate = true;
+
+							}
+
+							if (clock.getElapsedTime().asSeconds() >= 1.0f && !pcstate && winer > 0 && continuePlay.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								still = true;
+								Init();
+								pcstate = false;
+								playerIcon = 0;
+							}
+							else
+								if (clock.getElapsedTime().asSeconds() >= 1.0f && winer > 0 && exitBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+									still = false;
+									winer = 0; n = 0;
+									state = MENU;
+									resume = false;
+									playerIcon = 0;
+									pcstate = false;
+								}
+								else
+									if (winer == 0)
+									{
+										if (turn == n * n) {
+											winer = 3;
+											if (pcstate) updatePVC(winer); else updatePVP(winer);
+										}
+									}
+
+							if (!pcstate && player1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								player1.setString("| ");
+								enterTextPlayer1 = true;
+							}
+							if (!pcstate && player2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								player2.setString("| ");
+								enterTextPlayer2 = true;
+							}
+							if (pcstate && player.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								player.setString("| ");
+								enterTextPlayer = true;
+							}
+							if (save.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								state = SAVE;
+								InitForSaveAndLoad();
+								loadPC = pcstate;
+								enter = false;
+								enterNameFile = true;
+							}
+							if (backgroundButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								backgroundOn = !backgroundOn;
+							}
+
+						}
+						if (event.type == sf::Event::TextEntered) {
+							if (enterTextPlayer1) enterTextPlayer1 = enterName(player1, event);
+							if (enterTextPlayer2) enterTextPlayer2 = enterName(player2, event);
+							if (enterTextPlayer)  enterTextPlayer = enterName(player, event);
+						}
 					}
 					else
-						if (clock.getElapsedTime().asSeconds() >= 1.0f && winer > 0 && exitBox.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							still = false;
-							winer = 0; n = 0;
-							state = MENU;
-							resume = false;
-							playerIcon = 0;
-							pcstate = false;
+						if (state == SAVE) {
+							if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+								if (boxName1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+									enter = true;
+									enterNameFile = true;
+								}
+								if (saveButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+									state = PLAY;
+									if (!pcstate) saveGamePVP();
+									else {
+										saveGamePVC();
+										pcstate = true;
+									}
+								}
+							}
+							if (enterNameFile && event.type == sf::Event::TextEntered) {
+								enterNameFile = enterName(name, event);
+							}
+							if (!enterNameFile) {
+								enterNameSucceed = true;
+							}
 						}
 						else
-							if (winer == 0)
-							{
-								if (turn == n * n) {
-									winer = 3;
-									if (pcstate) updatePVC(winer); else updatePVP(winer);
+							if (state == LOAD) {
+								if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+									if (!chooseModeToLoad) {
+										if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+											loadPC = false;
+											chooseModeToLoad = true;
+										}
+										if (pcMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+											loadPC = true;
+											chooseModeToLoad = true;
+										}
+									}
+									else {
+										if (boxName1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+											enter = true;
+											enterNameFile = true;
+										}
+										if (loadButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+											state = PLAY;
+											if (!loadPC) {
+												loadGamePVP();
+												if (!loadError) {
+													Init();
+													loadGamePVP();
+													state = PLAY;
+													drawableInit = true;
+												}
+												else {
+													state = LOAD;
+													InitForSaveAndLoad();
+												}
+											}
+											else {
+												loadGamePVC();
+												if (!loadError) {
+													Init();
+													pcstate = true;
+													loadGamePVC();
+													state = PLAY;
+													drawableInit = true;
+												}
+												else {
+													state = LOAD;
+													InitForSaveAndLoad();
+												}
+											}
+										}
+									}
+								}
+								if (enterNameFile && event.type == sf::Event::TextEntered) {
+									enterNameFile = enterName(name, event);
+								}
+								if (!enterNameFile) {
+									enterNameSucceed = true;
 								}
 							}
+							else
+								if (state == STATISTIC) {
+									if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+										if (!chooseModeToLoad) {
+											if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+												loadPC = false;
+												chooseModeToLoad = true;
+												InitForStatistic(0);
+											}
+											if (pcMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+												loadPC = true;
+												chooseModeToLoad = true;
+												InitForStatistic(1);
+											}
+										}
+										if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+											state = MENU;
+										}
+									}
+									if (chooseModeToLoad && event.type == sf::Event::TextEntered) {
+										int num = Number(event, enterNumber);
+										//cout << num<<endl;
+										if (event.text.unicode == 13) {
+											if (num != 0 & num <= GAMES) {
+												if (loadPC) {
+													Init();
+													InitForViewPVC(num);
+													state = VIEW;
+													drawableInit = true;
+												}
+												else {
+													Init();
+													InitForViewPVP(num);
+													state = VIEW;
+													drawableInit = true;
+												}
+											}
+											else {
+												if (loadPC) InitForStatistic(1); else  InitForStatistic(0);
+												chooseNumberSucceed = false;
+											}
+										}
+									}
+								}
+								else
+									if (state == VIEW) {
+										if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+										{
+											if (sound.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+												if (playMusic) {
+													playMusic = false;
+													sound.setTexture(soundOffText);
+													music.pause();
+												}
+												else {
+													playMusic = true;
+													sound.setTexture(soundOnText);
+													music.play();
+												}
+											}
 
-					if (!pcstate && player1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						player1.setString("| ");
-						enterTextPlayer1 = true;
-					}
-					if (!pcstate && player2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						player2.setString("| ");
-						enterTextPlayer2 = true;
-					}
-					if (pcstate && player.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						player.setString("| ");
-						enterTextPlayer = true;
-					}
-					if (save.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = SAVE;
-						InitForSaveAndLoad();
-						loadPC = pcstate;
-						enter = false;
-						enterNameFile = true;
-					}
-					if (backgroundButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						backgroundOn = !backgroundOn;
-					}
-
-				}
-				if (event.type == sf::Event::TextEntered) {
-					if (enterTextPlayer1) enterTextPlayer1 = enterName(player1,event);
-					if (enterTextPlayer2) enterTextPlayer2 = enterName(player2,event);
-					if (enterTextPlayer)  enterTextPlayer = enterName(player, event);
-				}
-			}
-			else 
-			if (state == SAVE) {
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-					if (boxName1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						enter = true;
-						enterNameFile = true;
-					}
-					if (saveButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = PLAY;
-						if (!pcstate) saveGamePVP();
-						else {
-							saveGamePVC();
-							pcstate = true;
-						}
-					}
-				}
-				if (enterNameFile && event.type == sf::Event::TextEntered) {
-					enterNameFile = enterName(name, event);
-				}
-				if (!enterNameFile) {
-					enterNameSucceed = true;
-				}
-			}
-			else
-			if (state == LOAD) {
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-					if (!chooseModeToLoad) {
-						if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							loadPC = false;
-							chooseModeToLoad = true;
-						}
-						if (pcMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							loadPC = true;
-							chooseModeToLoad = true;
-						}
-					}
-					else {
-						if (boxName1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							enter = true;
-							enterNameFile = true;
-						}
-						if (loadButton.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							state = PLAY;
-							if (!loadPC) {
-								loadGamePVP();
-								if (!loadError) {
-									Init();
-									loadGamePVP();
-									state = PLAY;
-									drawableInit = true;
-								}
-								else {
-									state = LOAD;
-									InitForSaveAndLoad();
-								}
-							}
-							else {
-								loadGamePVC();
-								if (!loadError) {
-									Init();
-									pcstate = true;
-									loadGamePVC();
-									state = PLAY;
-									drawableInit = true;
-								}
-								else {
-									state = LOAD;
-									InitForSaveAndLoad();
-								}
-							}
-						}
-					}
-				}
-				if (enterNameFile && event.type == sf::Event::TextEntered) {
-					enterNameFile = enterName(name, event);
-				}
-				if (!enterNameFile) {
-					enterNameSucceed = true;
-				}
-			}
-			else
-			if (state == STATISTIC) {
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-					if (!chooseModeToLoad) {
-						if (ppMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							loadPC = false;
-							chooseModeToLoad = true;
-							InitForStatistic(0);
-						}
-						if (pcMode.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-							loadPC = true;
-							chooseModeToLoad = true;
-							InitForStatistic(1);
-						}
-					}
-					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = MENU;
-					}
-				}
-				if (chooseModeToLoad && event.type == sf::Event::TextEntered) {
-					int num = Number(event, enterNumber);
-					//cout << num<<endl;
-					if (event.text.unicode == 13) {
-						if (num != 0 & num <= GAMES) {
-							if (loadPC) {
-								Init();
-								InitForViewPVC(num);
-								state = VIEW;
-								drawableInit = true;
-							}
-							else {
-								Init();
-								InitForViewPVP(num);
-								state = VIEW;
-								drawableInit = true;
-							}
-						}
-						else {
-							if (loadPC) InitForStatistic(1); else  InitForStatistic(0);
-							chooseNumberSucceed = false;
-						}
-					}
-				}
-			}
-			else 
-			if (state == VIEW) {
-				if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-				{
-					if (sound.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						if (playMusic) {
-							playMusic = false;
-							sound.setTexture(soundOffText);
-							music.pause();
-						}
-						else {
-							playMusic = true;
-							sound.setTexture(soundOnText);
-							music.play();
-						}
-					}
-
-					if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-						state = STATISTIC;
-						music.pause();
-						playMusic = false;
-						sound.setTexture(soundOffText);
-						chooseModeToLoad = false;
-					}
-				}
-			}
-			else 
-			if (state == ABOUTUS && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-				if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-					state = MENU;
-				}
-			}
+											if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+												state = STATISTIC;
+												music.pause();
+												playMusic = false;
+												sound.setTexture(soundOffText);
+												chooseModeToLoad = false;
+											}
+										}
+									}
+									else
+										if (state == ABOUTUS && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+											if (back.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+												state = MENU;
+											}
+										}
 		}
-		
+
 #pragma region LOGIC
 		//LOGIC
-		
+
 		if (state == MENU)
 		{
 			if (!resume) Init();
 		}
 		else
-		if (state == CHOOSE_SIZE) {
+			if (state == CHOOSE_SIZE) {
 				xBox.setPosition(294, 408);
 				oBox.setPosition(456, 408);
-		}
-		else
-		if (state == PLAY) {
-			stringstream text ;
-			text << xScore << " : " << oScore;
-			score.setString(text.str());
-			score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
-			winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
-			boxSize = screenHeight / n;
-			board = n * boxSize;
-			gameBoard.setSize(sf::Vector2f(board, board));
-			gameBoard.setPosition(0, (screenHeight - board) / 2);
-			information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
-			information.setPosition(board, 0);
-			X = 0, Y = (screenHeight - board) / 2;
-			if (drawableInit) {
-				for (i = 1; i <= n; i++)
-				{
-					for (j = 1; j <= n; j++)
-					{
-						box[i][j].setSize(sf::Vector2f(boxSize, boxSize));
-						box[i][j].setPosition(X, Y);
-						X = X + boxSize;
-					}
-					Y = Y + boxSize;
-					X = 0;
-				}
-				drawableInit = false;
 			}
-			oBox.setPosition(615, 122);
-			xBox.setPosition(615, 42);
-			oBox.setTexture(oBoxText);
-			xBox.setTexture(xBoxText);
+			else
+				if (state == PLAY) {
+					stringstream text;
+					text << xScore << " : " << oScore;
+					score.setString(text.str());
+					score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
+					winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
+					boxSize = screenHeight / n;
+					board = n * boxSize;
+					gameBoard.setSize(sf::Vector2f(board, board));
+					gameBoard.setPosition(0, (screenHeight - board) / 2);
+					information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
+					information.setPosition(board, 0);
+					X = 0, Y = (screenHeight - board) / 2;
+					if (drawableInit) {
+						for (i = 1; i <= n; i++)
+						{
+							for (j = 1; j <= n; j++)
+							{
+								box[i][j].setSize(sf::Vector2f(boxSize, boxSize));
+								box[i][j].setPosition(X, Y);
+								X = X + boxSize;
+							}
+							Y = Y + boxSize;
+							X = 0;
+						}
+						drawableInit = false;
+					}
+					oBox.setPosition(615, 122);
+					xBox.setPosition(615, 42);
+					oBox.setTexture(oBoxText);
+					xBox.setTexture(xBoxText);
 
-			//PvC
-			if (pcstate) {
-				if (playerIcon == 1) {
-					player.setPosition(684, 50);
-					computer.setPosition(684, 140);
-				}
-				else {
-					player.setPosition(684, 140);
-					computer.setPosition(684, 50);
-				}
-
-				doIt(undostate, playerIcon);
-
-				//Time delay computer play 
-				if (turn % 2 == 0) {
-					int x = D[turn].second.first;
-					int y = D[turn].second.second;
-					if (clock.getElapsedTime().asSeconds() >= 0.5f) {
-						if (D[turn].first == 1) {
-							if (winer > 0 && winer != 3) box[x][y].setTexture(&blackXText);
-							else box[x][y].setTexture(&bigXBoxText);
+					//PvC
+					if (pcstate) {
+						if (playerIcon == 1) {
+							player.setPosition(684, 50);
+							computer.setPosition(684, 140);
 						}
 						else {
-							if (winer > 0 && winer != 3) box[x][y].setTexture(&blackOText);
-							else box[x][y].setTexture(&bigOBoxText);
+							player.setPosition(684, 140);
+							computer.setPosition(684, 50);
+						}
+
+						doIt(undostate, playerIcon);
+
+						//Time delay computer play 
+						if (turn % 2 == 0) {
+							int x = D[turn].second.first;
+							int y = D[turn].second.second;
+							if (clock.getElapsedTime().asSeconds() >= 0.5f) {
+								if (D[turn].first == 1) {
+									if (winer > 0 && winer != 3) box[x][y].setTexture(&blackXText);
+									else box[x][y].setTexture(&bigXBoxText);
+								}
+								else {
+									if (winer > 0 && winer != 3) box[x][y].setTexture(&blackOText);
+									else box[x][y].setTexture(&bigOBoxText);
+								}
+							}
+							else box[x][y].setTexture(&emptyText);
+						}
+						if (turn % 2 == 1 && winer > 0) {
+							if (D[turn].first == 1) {
+								box[D[turn].second.first][D[turn].second.second].setTexture(&blackXText);
+							}
+							else box[D[turn].second.first][D[turn].second.second].setTexture(&blackOText);
 						}
 					}
-					else box[x][y].setTexture(&emptyText);
-				}
-				if (turn % 2 == 1 && winer > 0) {
-					if (D[turn].first == 1) {
-						box[D[turn].second.first][D[turn].second.second].setTexture(&blackXText);
+
+					//PvP
+					if (!pcstate) {
+
+						//Undo
+						if (undostate && !Save.empty()) {
+							int x = Save.top().second.first;
+							int y = Save.top().second.second;
+							box[x][y].setTexture(&emptyText);
+							undostate = false;
+							turn--;
+							if (Save.top().first == 1) {
+								B1[x][y] = true;
+								B2[x][y] = true;
+								player1Turn = true;
+							}
+							else {
+								B2[x][y] = true;
+								B1[x][y] = true;
+								player1Turn = false;
+							}
+							Save.pop();
+						}
+
+						if (player1Turn) {
+							player1.setStyle(sf::Text::Underlined);
+							player2.setStyle(sf::Text::Regular);
+						}
+						else {
+							player1.setStyle(sf::Text::Regular);
+							player2.setStyle(sf::Text::Underlined);
+						}
+
+						while (!S.empty()) {
+							int u = S.top().second.first;
+							int v = S.top().second.second;
+							if (S.top().first == 1) {
+								box[u][v].setTexture(&bigXBoxText);
+							}
+							else
+							{
+								box[u][v].setTexture(&bigOBoxText);
+							}
+							S.pop();
+						}
+
+
+						if (winer > 0) {
+							//Animation win 
+
+							if (winer != 3) {
+								if (n <= 3) putAnimationWin(winX, winY, 3);
+								else if (n <= 6) putAnimationWin(winX, winY, 4);
+								else putAnimationWin(winX, winY, 5);
+
+								//cout << winX << " " << winY << endl;
+							}
+
+							if (winer == 1) {
+								sf::String str;
+								str = player1.getString() + " Win";
+								winNoti.setString(str);
+							}
+							else
+								if (winer == 2) {
+									sf::String str;
+									str = player2.getString() + " Win";
+									winNoti.setString(str);
+								}
+								else
+								{
+									winNoti.setString("DRAW!");
+									winNoti.setPosition(250, 232);
+								}
+						}
 					}
-					else box[D[turn].second.first][D[turn].second.second].setTexture(&blackOText);
-				}
-			}
 
-			//PvP
-			if (!pcstate) {
-
-				//Undo
-				if (undostate && !Save.empty()) {
-					int x = Save.top().second.first;
-					int y = Save.top().second.second;
-					box[x][y].setTexture(&emptyText);
-					undostate = false;
-					turn--;
-					if (Save.top().first == 1) {
-						B1[x][y] = true;
-						B2[x][y] = true;
-						player1Turn = true;
-					}
-					else {
-						B2[x][y] = true;
-						B1[x][y] = true;
-						player1Turn = false;
-					}
-					Save.pop();
 				}
-
-				if (player1Turn) {
-					player1.setStyle(sf::Text::Underlined);
-					player2.setStyle(sf::Text::Regular);
-				}
-				else {
-					player1.setStyle(sf::Text::Regular);
-					player2.setStyle(sf::Text::Underlined);
-				}
-
-				while (!S.empty()) {
-					int u = S.top().second.first;
-					int v = S.top().second.second;
-					if (S.top().first == 1) {
-						box[u][v].setTexture(&bigXBoxText);
+				else
+					if (state == SAVE) {
+						saveButton.setPosition((screenWidth - saveButton.getGlobalBounds().width) / 2, 550);
+						asking.setString("Enter a name to save: ");
+						asking.setPosition((screenWidth - asking.getGlobalBounds().width) / 2, 114);
+						name.setPosition((screenWidth - name.getGlobalBounds().width) / 2, 220);
+						if (enterNameSucceed) {
+							nameNoti.setString("Your file game is :" + name.getString() + ".txt");
+							nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
+						}
 					}
 					else
-					{
-						box[u][v].setTexture(&bigOBoxText);
-					}
-					S.pop();
-				}
-
-
-				if (winer > 0) {
-					//Animation win 
-
-					if (winer != 3) {
-						if (n <= 3) putAnimationWin(winX, winY, 3);
-						else if (n <= 6) putAnimationWin(winX, winY, 4);
-						else putAnimationWin(winX, winY, 5);
-
-						//cout << winX << " " << winY << endl;
-					}
-					
-					if (winer == 1) {
-						sf::String str;
-						str = player1.getString() + " Win";
-						winNoti.setString(str);
-					}
-					else
-						if (winer == 2) {
-							sf::String str;
-							str = player2.getString() + " Win";
-							winNoti.setString(str);
+						if (state == LOAD) {
+							if (loadError) {
+								nameNoti.setString("Not found. Enter again!");
+								nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
+							}
+							asking.setString("Enter a name to load: ");
+							asking.setPosition((screenWidth - asking.getGlobalBounds().width) / 2, 114);
+							name.setPosition((screenWidth - name.getGlobalBounds().width) / 2, 220);
+							if (enterNameSucceed && !loadError) {
+								nameNoti.setString("The game you want to play: " + name.getString());
+								nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
+							}
 						}
 						else
-						{
-							winNoti.setString("DRAW!");
-							winNoti.setPosition(250, 232);
-						}
-				}
-			}
+							if (state == STATISTIC) {
+								if (chooseModeToLoad) {
+									numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 80);
+									xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 150);
+									oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2, 230);
+									draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2, 310);
+									enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 450);
+									back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
+									numberBox2.setPosition((screenWidth - numberBox2.getLocalBounds().width) / 2, 450);
+								}
+							}
+							else
+								if (state == VIEW) {
+									stringstream text;
+									text << xScore << " : " << oScore;
+									score.setString(text.str());
+									score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
+									winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
+									boxSize = screenHeight / n;
+									board = n * boxSize;
+									gameBoard.setSize(sf::Vector2f(board, board));
+									gameBoard.setPosition(0, (screenHeight - board) / 2);
+									information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
+									information.setPosition(board, 0);
+									X = 0, Y = (screenHeight - board) / 2;
+									if (drawableInit) {
+										for (i = 1; i <= n; i++)
+										{
+											for (j = 1; j <= n; j++)
+											{
+												box[i][j].setSize(sf::Vector2f(boxSize, boxSize));
+												box[i][j].setPosition(X, Y);
+												X = X + boxSize;
+											}
+											Y = Y + boxSize;
+											X = 0;
+										}
+										drawableInit = false;
+									}
+									oBox.setPosition(615, 122);
+									xBox.setPosition(615, 42);
+									oBox.setTexture(oBoxText);
+									xBox.setTexture(xBoxText);
 
-		}
-		else 
-		if (state == SAVE) {
-			saveButton.setPosition((screenWidth - saveButton.getGlobalBounds().width) / 2, 550);
-			asking.setString("Enter a name to save: ");
-			asking.setPosition((screenWidth - asking.getGlobalBounds().width) / 2, 114);
-			name.setPosition((screenWidth - name.getGlobalBounds().width) / 2, 220);
-			if (enterNameSucceed) {
-				nameNoti.setString("Your file game is :" + name.getString() + ".txt");
-				nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
-			}
-		}
-		else
-		if (state == LOAD) {
-			if (loadError) {
-				nameNoti.setString("Not found. Enter again!");
-				nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
-			}
-			asking.setString("Enter a name to load: ");
-			asking.setPosition((screenWidth - asking.getGlobalBounds().width) / 2, 114);
-			name.setPosition((screenWidth - name.getGlobalBounds().width) / 2, 220);
-			if (enterNameSucceed && !loadError) {
-				nameNoti.setString("The game you want to play: " + name.getString());
-				nameNoti.setPosition((screenWidth - nameNoti.getGlobalBounds().width) / 2, 275);
-			}
-		}
-		else 
-		if (state == STATISTIC) {
-			if (chooseModeToLoad) {
-				numberOfGame.setPosition((screenWidth - numberOfGame.getGlobalBounds().width) / 2, 80);
-				xWin.setPosition((screenWidth - xWin.getGlobalBounds().width) / 2, 150);
-				oWin.setPosition((screenWidth - oWin.getGlobalBounds().width) / 2, 230);
-				draw.setPosition((screenWidth - draw.getGlobalBounds().width) / 2, 310);
-				enterNumber.setPosition((screenWidth - enterNumber.getGlobalBounds().width) / 2, 450);
-				back.setPosition((screenWidth - back.getGlobalBounds().width), screenHeight - back.getGlobalBounds().height);
-				numberBox2.setPosition((screenWidth - numberBox2.getLocalBounds().width) / 2, 450);
-			}
-		}
-		else 
-		if (state == VIEW) {
-			stringstream text;
-			text << xScore << " : " << oScore;
-			score.setString(text.str());
-			score.setPosition(600 + (200 - score.getGlobalBounds().width) / 2, 468);
-			winNoti.setPosition((600 - winNoti.getGlobalBounds().width) / 2, 232);
-			boxSize = screenHeight / n;
-			board = n * boxSize;
-			gameBoard.setSize(sf::Vector2f(board, board));
-			gameBoard.setPosition(0, (screenHeight - board) / 2);
-			information.setSize(sf::Vector2f((screenWidth - board), screenHeight));
-			information.setPosition(board, 0);
-			X = 0, Y = (screenHeight - board) / 2;
-			if (drawableInit) {
-				for (i = 1; i <= n; i++)
-				{
-					for (j = 1; j <= n; j++)
-					{
-						box[i][j].setSize(sf::Vector2f(boxSize, boxSize));
-						box[i][j].setPosition(X, Y);
-						X = X + boxSize;
-					}
-					Y = Y + boxSize;
-					X = 0;
-				}
-				drawableInit = false;
-			}
-			oBox.setPosition(615, 122);
-			xBox.setPosition(615, 42);
-			oBox.setTexture(oBoxText);
-			xBox.setTexture(xBoxText);
-
-			//PvC
-			if (pcstate) {
-				if (playerIcon == 1) {
-					player.setPosition(684, 50);
-					computer.setPosition(684, 140);
-				}
-				else {
-					player.setPosition(684, 140);
-					computer.setPosition(684, 50);
-				}
-			}
+									//PvC
+									if (pcstate) {
+										if (playerIcon == 1) {
+											player.setPosition(684, 50);
+											computer.setPosition(684, 140);
+										}
+										else {
+											player.setPosition(684, 140);
+											computer.setPosition(684, 50);
+										}
+									}
 
 
-		}
-		else 
-		if (state == ABOUTUS) {
-			back.setPosition(screenWidth - back.getGlobalBounds().width, screenHeight - back.getGlobalBounds().height);
-		}
+								}
+								else
+									if (state == ABOUTUS) {
+										back.setPosition(screenWidth - back.getGlobalBounds().width, screenHeight - back.getGlobalBounds().height);
+									}
 #pragma endregion 
 
 		//RENDERING
@@ -2687,7 +2687,7 @@ int main() {
 		window.clear();
 
 		switch (state)
-	{
+		{
 		case SPLASH:
 			window.draw(logo);
 			break;
@@ -2764,7 +2764,7 @@ int main() {
 				}
 			}
 			break;
-		
+
 		case CHOOSEMODE:
 			window.draw(ppMode);
 			window.draw(pcMode);
@@ -2848,8 +2848,8 @@ int main() {
 			intro(window);
 			window.draw(back);
 			break;
-	}
-			
+		}
+
 		window.display();
 	}
 
