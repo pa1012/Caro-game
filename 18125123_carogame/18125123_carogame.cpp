@@ -352,11 +352,11 @@ void InitForViewPVC(int num) {
 			int x = D[i].second.first;
 			int y = D[i].second.second;
 			if (icon == 1) {
-				B1[x][y] = false;
+				B[1][x][y] = false;
 				box[x][y].setTexture(&bigXBoxText);
 			}
 			else {
-				B2[x][y] = false;
+				B[2][x][y] = false;
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
@@ -1858,11 +1858,11 @@ void loadGamePVC() {
 			int x = D[i].second.first;
 			int y = D[i].second.second;
 			if (icon == 1) {
-				B1[x][y] = false;
+				B[1][x][y] = false;
 				box[x][y].setTexture(&bigXBoxText);
 			}
 			else {
-				B2[x][y] = false;
+				B[2][x][y] = false;
 				box[x][y].setTexture(&bigOBoxText);
 			}
 			//S.push(make_pair(icon, make_pair(x, y)));
